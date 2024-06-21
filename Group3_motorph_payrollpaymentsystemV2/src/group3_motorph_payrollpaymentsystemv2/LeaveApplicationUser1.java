@@ -720,7 +720,7 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
                 }
             } else {
                 JOptionPane.showMessageDialog(null,
-                        "Only entries with status 'Pending' can be update.",
+                        "Only entries with status 'Pending' can be updated.",
                         "update Entry Error",
                         JOptionPane.ERROR_MESSAGE);
             }

@@ -1,12 +1,15 @@
 package group3_motorph_payrollpaymentsystemv2;
 
+import com.opencsv.CSVWriter;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class LeaveApplicationAdmin extends javax.swing.JFrame {
@@ -20,7 +23,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
     public LeaveApplicationAdmin() throws FileNotFoundException, IOException {
         initComponents();
         csvRun();
-        
+
     }
 
     private void csvRun() throws FileNotFoundException, IOException {
@@ -57,6 +60,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
 
         for (LeaveDetails employee : employees) {
             tableModel.addRow(new Object[]{
+                employee.getentryNum(),
                 employee.getEmployeeNumber(),
                 employee.getLastName(),
                 employee.getFirstName(),
@@ -77,6 +81,28 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         for (LeaveDetails employee : employees) {
             if ("Pending".equalsIgnoreCase(employee.getLeaveStatus())) {
                 tableModel.addRow(new Object[]{
+                    employee.getentryNum(),
+                    employee.getEmployeeNumber(),
+                    employee.getLastName(),
+                    employee.getFirstName(),
+                    employee.getLeaveStatus(),
+                    employee.getSubmittedDate(),
+                    employee.getLeaveReason(),
+                    employee.getStartDate(),
+                    employee.getEndDate(),
+                    employee.getLeaveDay()});
+            }
+        }
+    }
+
+    public void previousLeaves() {
+        DefaultTableModel tableModel = (DefaultTableModel) jTableLeaveApplications.getModel();
+        tableModel.setRowCount(0); // Clear existing rows
+
+        for (LeaveDetails employee : employees) {
+            if (!"Pending".equalsIgnoreCase(employee.getLeaveStatus())) {
+                tableModel.addRow(new Object[]{
+                    employee.getentryNum(),
                     employee.getEmployeeNumber(),
                     employee.getLastName(),
                     employee.getFirstName(),
@@ -101,7 +127,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         int otherLeaveTotal = 0;
 
         for (LeaveDetails employee : employees) {
-            if (employee.getEmployeeNumber().equals(employeeNumber)) {
+            if (employee.getEmployeeNumber().equals(employeeNumber) && employee.getLeaveStatus().equals("Approved")) {
                 switch (employee.getLeaveReason()) {
                     case "Sick Leave":
                         sickLeaveTotal += Integer.parseInt(employee.getLeaveDay());
@@ -139,6 +165,103 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jTextFieldMaternity.setText(maternityLeaveTotal);
         jTextFieldOthers.setText(otherLeaveTotal);
     }
+
+    public void updateLeaveStatus(String Status) {
+        DefaultTableModel tableModel = (DefaultTableModel) jTableLeaveApplications.getModel();
+        int selectedRow = jTableLeaveApplications.getSelectedRow();
+
+        if (selectedRow != -1) {
+            String selectedRowStatus = tableModel.getValueAt(selectedRow, 4).toString(); // Leave Status is in the 5th column (index 4)
+
+            if (selectedRowStatus.equals("Pending")) {
+                int response = JOptionPane.showConfirmDialog(null,
+                        "Do you want to proceed with changing the leave status",
+                        "Update Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+                if (response == JOptionPane.YES_OPTION) {
+                    tableModel.setValueAt(Status, selectedRow, 4); // Update the status in the table model
+
+                    // Optionally update the employees list if you have it available
+                    String employeeNumber = tableModel.getValueAt(selectedRow, 1).toString(); // Employee Number is in the 2nd column (index 1)
+                    for (LeaveDetails employee : employees) {
+                        if (employee.getEmployeeNumber().equals(employeeNumber) && "Pending".equalsIgnoreCase(employee.getLeaveStatus())) {
+                            employee.setLeaveStatus(Status);
+                            break; // Assuming each employee number is unique, we can break after the first match
+                        }
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Only entries with 'Pending' leave status can be updated.",
+                        "update Entry Error",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        }
+    }
+/*
+    public void updateCSV() {
+        String csvFile = "leave_applications_2.csv";
+        DefaultTableModel tableModel = (DefaultTableModel) jTableLeaveApplications.getModel();
+
+        try (CSVWriter writer = new CSVWriter(new FileWriter(csvFile))) {
+            // Write header
+            String[] header = {"Entry ID", "Employee Number", "Last Name", "First Name", "Leave Status",
+                "Date Filed", "Reason for Leave", "Start Date", "End Date", "Leave Days"};
+            writer.writeNext(header);
+
+            // Write rows
+            int rowCount = tableModel.getRowCount();
+            int columnCount = tableModel.getColumnCount();
+            for (int i = 0; i < rowCount; i++) {
+                String[] row = new String[columnCount];
+                for (int j = 0; j < columnCount; j++) {
+                    row[j] = tableModel.getValueAt(i, j).toString();
+                }
+                writer.writeNext(row);
+            }
+
+            JOptionPane.showMessageDialog(null, "Record updated successfully");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Failed to update your record.");
+        }
+    }
+
+  */
+     public void updateCSV() {
+    String csvFile = "leave_applications_2.csv";
+    
+    try (CSVWriter writer = new CSVWriter(new FileWriter(csvFile))) {
+        // Write header
+        String[] header = {"Entry ID", "Employee Number", "Last Name", "First Name", "Leave Status", 
+                           "Date Filed", "Reason for Leave", "Start Date", "End Date", "Leave Days"};
+        writer.writeNext(header);
+        
+        // Write rows
+        for (LeaveDetails employee : employees) {
+            String[] row = {
+                employee.getentryNum(),
+                employee.getEmployeeNumber(),
+                employee.getLastName(),
+                employee.getFirstName(),
+                employee.getLeaveStatus(),
+                employee.getSubmittedDate(),
+                employee.getLeaveReason(),
+                employee.getStartDate(),
+                employee.getEndDate(),
+                employee.getLeaveDay()
+            };
+            writer.writeNext(row);
+        }
+        
+        JOptionPane.showMessageDialog(null, "Record updated successfully");
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Failed to update your record.");
+    }
+}
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -193,6 +316,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLeaveApplications = new javax.swing.JTable();
         jRadioButtonPending = new javax.swing.JRadioButton();
+        jButtonSave = new javax.swing.JButton();
 
         jRadioButtonVacationLeave1.setText("Vacation Leave");
         jRadioButtonVacationLeave1.addActionListener(new java.awt.event.ActionListener() {
@@ -393,7 +517,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                                         .addComponent(jTextFieldMaternity, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel19)))))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,7 +552,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 310, 220));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 280, 220));
 
         jButtonReject.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonReject.setText("REJECT");
@@ -437,7 +561,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jButtonRejectActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, -1, -1));
+        getContentPane().add(jButtonReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
 
         jButtonApprove.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonApprove.setText("APPROVE");
@@ -446,22 +570,22 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jButtonApproveActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, -1, -1));
+        getContentPane().add(jButtonApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
 
         jTableLeaveApplications.setAutoCreateRowSorter(true);
         jTableLeaveApplications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Employee Number", "Last Name", "First Name", "Leave Status", "Date Filed", "Reason for Leave", "Start Date", "End Date", "Leave Days"
+                "Entry ID", "Employee Number", "Last Name", "First Name", "Leave Status", "Date Filed", "Reason for Leave", "Start Date", "End Date", "Leave Days"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -477,7 +601,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableLeaveApplications);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 600, 140));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 670, 140));
 
         jRadioButtonPending.setText("Show Pending Only");
         jRadioButtonPending.addActionListener(new java.awt.event.ActionListener() {
@@ -486,6 +610,15 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jRadioButtonPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
+
+        jButtonSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonSave.setText("SAVE");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -530,10 +663,14 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
 
     private void jButtonRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRejectActionPerformed
         // TODO add your handling code here:
+        updateLeaveStatus("Rejected");
+        showSummary();
     }//GEN-LAST:event_jButtonRejectActionPerformed
 
     private void jButtonApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApproveActionPerformed
         // TODO add your handling code here:
+        updateLeaveStatus("Approved");
+        showSummary();
     }//GEN-LAST:event_jButtonApproveActionPerformed
 
     private void jTextFieldSickLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSickLeaveActionPerformed
@@ -548,17 +685,17 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTableLeaveApplications.getModel();
         int selectedRowIndex = jTableLeaveApplications.getSelectedRow();
-        String lastName = model.getValueAt(selectedRowIndex, 1).toString();
-        String firstName = model.getValueAt(selectedRowIndex, 2).toString();
-        String fullName = lastName + firstName;
+        String lastName = model.getValueAt(selectedRowIndex, 2).toString();
+        String firstName = model.getValueAt(selectedRowIndex, 3).toString();
+        String fullName = lastName + ", " + firstName;
 
-        jTextFieldEmployeeNum.setText(model.getValueAt(selectedRowIndex, 0).toString());
+        jTextFieldEmployeeNum.setText(model.getValueAt(selectedRowIndex, 1).toString());
         jTextFieldEmployeeName.setText(fullName);
-        jTextFieldDateFiled.setText(model.getValueAt(selectedRowIndex, 4).toString());
-        jTextFieldLeaveReason.setText(model.getValueAt(selectedRowIndex, 5).toString());
-        jTextFieldStartDate.setText(model.getValueAt(selectedRowIndex, 6).toString());
-        jTextFieldEndDate.setText(model.getValueAt(selectedRowIndex, 7).toString());
-        jTextFieldLeaveDays.setText(model.getValueAt(selectedRowIndex, 8).toString());
+        jTextFieldDateFiled.setText(model.getValueAt(selectedRowIndex, 5).toString());
+        jTextFieldLeaveReason.setText(model.getValueAt(selectedRowIndex, 6).toString());
+        jTextFieldStartDate.setText(model.getValueAt(selectedRowIndex, 7).toString());
+        jTextFieldEndDate.setText(model.getValueAt(selectedRowIndex, 8).toString());
+        jTextFieldLeaveDays.setText(model.getValueAt(selectedRowIndex, 9).toString());
         showSummary();
 
     }//GEN-LAST:event_jTableLeaveApplicationsMouseClicked
@@ -571,8 +708,15 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         } else {
             informationTable(employees);
         }
+        
 
     }//GEN-LAST:event_jRadioButtonPendingActionPerformed
+
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        // TODO add your handling code here:
+        
+        updateCSV();
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -619,6 +763,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonApprove;
     private javax.swing.JButton jButtonReject;
+    private javax.swing.JButton jButtonSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
