@@ -16,9 +16,9 @@ public class LeaveDetails {
 
     // Constructor
     public LeaveDetails(        
-        String entryNum, String employeeNumber, String lastName, String firstName, String leaveStatus, String submittedDate,
+      String entryNum, String employeeNumber, String lastName, String firstName, String leaveStatus, String submittedDate,
             String leaveReason, String startDate, String endDate, String leaveDay) {
-        this.entryNum = entryNum;
+        this.entryNum = entryNum ;
         this.employeeNumber = employeeNumber;
         this.lastName = lastName;
         this.firstName = firstName;
