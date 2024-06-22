@@ -2,6 +2,7 @@ package group3_motorph_payrollpaymentsystemv2;
 
 import com.opencsv.CSVWriter;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
     public LeaveApplicationAdmin() throws FileNotFoundException, IOException {
         initComponents();
         csvRun();
+        setIconImage();
 
     }
 
@@ -293,7 +295,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jTextFieldLeaveDays = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -317,6 +318,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jTableLeaveApplications = new javax.swing.JTable();
         jRadioButtonPending = new javax.swing.JRadioButton();
         jButtonSave = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         jRadioButtonVacationLeave1.setText("Vacation Leave");
         jRadioButtonVacationLeave1.addActionListener(new java.awt.event.ActionListener() {
@@ -341,12 +343,14 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jLabel16.setText("days");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Group 3 | CP2 | A1102");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Employee ID:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 13, -1, -1));
 
         jTextFieldEmployeeNum.setEditable(false);
         jTextFieldEmployeeNum.addActionListener(new java.awt.event.ActionListener() {
@@ -354,10 +358,10 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jTextFieldEmployeeNumActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 180, -1));
+        jPanel3.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 180, -1));
 
         jLabel8.setText("Employee Name");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 90, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 43, 90, -1));
 
         jTextFieldEmployeeName.setEditable(false);
         jTextFieldEmployeeName.addActionListener(new java.awt.event.ActionListener() {
@@ -365,7 +369,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jTextFieldEmployeeNameActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 180, -1));
+        jPanel3.add(jTextFieldEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 180, -1));
 
         jTextFieldDateFiled.setEditable(false);
         jTextFieldDateFiled.addActionListener(new java.awt.event.ActionListener() {
@@ -373,10 +377,10 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jTextFieldDateFiledActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldDateFiled, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 180, -1));
+        jPanel3.add(jTextFieldDateFiled, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 180, -1));
 
         jLabel3.setText("Date Filed");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 73, -1, -1));
 
         jTextFieldLeaveReason.setEditable(false);
         jTextFieldLeaveReason.addActionListener(new java.awt.event.ActionListener() {
@@ -384,10 +388,10 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jTextFieldLeaveReasonActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldLeaveReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 180, -1));
+        jPanel3.add(jTextFieldLeaveReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 180, -1));
 
         jLabel10.setText("Reason for Leave");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 100, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 103, 100, -1));
 
         jTextFieldStartDate.setEditable(false);
         jTextFieldStartDate.addActionListener(new java.awt.event.ActionListener() {
@@ -395,7 +399,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jTextFieldStartDateActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 180, -1));
+        jPanel3.add(jTextFieldStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 180, -1));
 
         jTextFieldEndDate.setEditable(false);
         jTextFieldEndDate.addActionListener(new java.awt.event.ActionListener() {
@@ -403,13 +407,13 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jTextFieldEndDateActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 180, -1));
+        jPanel3.add(jTextFieldEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 180, -1));
 
         jLabel11.setText("End Date");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 163, -1, -1));
 
         jLabel12.setText("Start Date");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 133, -1, -1));
 
         jTextFieldEmployeeNum6.setEditable(false);
         jTextFieldEmployeeNum6.addActionListener(new java.awt.event.ActionListener() {
@@ -417,13 +421,13 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jTextFieldEmployeeNum6ActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldEmployeeNum6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 180, -1));
+        jPanel3.add(jTextFieldEmployeeNum6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 180, -1));
 
         jLabel13.setText("End Date");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 163, -1, -1));
 
         jLabel14.setText("Leave Days");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 193, -1, -1));
 
         jTextFieldLeaveDays.setEditable(false);
         jTextFieldLeaveDays.addActionListener(new java.awt.event.ActionListener() {
@@ -431,148 +435,88 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jTextFieldLeaveDaysActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldLeaveDays, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 180, -1));
+        jPanel3.add(jTextFieldLeaveDays, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 180, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 340, 230));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 340, 220));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Leave Application");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 39));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel1.setText("Employee Leave Summary");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 43, -1, -1));
 
         jLabel4.setText("Sick Leave");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 73, -1, -1));
 
         jLabel6.setText("Vacation Leave");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 103, -1, -1));
 
         jLabel7.setText("Maternity  Leave");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 163, -1, -1));
 
         jLabel9.setText("Paternity Leave");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 133, -1, -1));
 
         jTextFieldSickLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldSickLeaveActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldSickLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 70, 100, -1));
+        jPanel1.add(jTextFieldVacationLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 100, 100, -1));
+        jPanel1.add(jTextFieldPaternity, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 130, 100, -1));
 
         jTextFieldMaternity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldMaternityActionPerformed(evt);
             }
         });
+        jPanel1.add(jTextFieldMaternity, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 160, 100, -1));
 
         jLabel15.setText("days");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 73, -1, -1));
 
         jLabel17.setText("days");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 103, -1, -1));
 
         jLabel18.setText("days");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 133, -1, -1));
 
         jLabel19.setText("days");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 163, -1, -1));
 
         jLabel20.setText("Others");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 193, -1, -1));
+        jPanel1.add(jTextFieldOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 190, 100, -1));
 
         jLabel21.setText("days");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 193, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldOthers, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldSickLeave, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel15))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldVacationLeave, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel17))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldPaternity, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel18))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextFieldMaternity, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel19)))))))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextFieldSickLeave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextFieldVacationLeave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextFieldPaternity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextFieldMaternity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(jTextFieldOthers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 280, 220));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 280, 220));
 
         jButtonReject.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonReject.setText("REJECT");
+        jButtonReject.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRejectActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
+        getContentPane().add(jButtonReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 150, 23));
 
         jButtonApprove.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonApprove.setText("APPROVE");
+        jButtonApprove.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonApproveActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
+        getContentPane().add(jButtonApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 23));
 
         jTableLeaveApplications.setAutoCreateRowSorter(true);
+        jTableLeaveApplications.setBackground(new java.awt.Color(255, 255, 255, 0));
         jTableLeaveApplications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -601,24 +545,33 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableLeaveApplications);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 670, 140));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 710, 120));
 
+        jRadioButtonPending.setBackground(new java.awt.Color(148, 129, 93));
+        jRadioButtonPending.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jRadioButtonPending.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonPending.setText("Show Pending Only");
         jRadioButtonPending.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonPendingActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
+        getContentPane().add(jRadioButtonPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         jButtonSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonSave.setText("SAVE");
+        jButtonSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, -1, -1));
+        getContentPane().add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, 23));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group3_motorph_payrollpaymentsystemv2/Leave Application Admin.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 440));
 
         pack();
         setLocationRelativeTo(null);
@@ -807,4 +760,8 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldStartDate;
     private javax.swing.JTextField jTextFieldVacationLeave;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.jpg")));
+    }
 }

@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
+import java.awt.Toolkit;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +39,7 @@ public class LoginManager extends javax.swing.JFrame {
         List<String[]> records = Filehandling.readCSV(csvFile);
         parseUserCredentials(records);
         loadAttemptsFromCSV();
+        setIconImage();
     }
 
     public List< EmployeeLogin> parseUserCredentials(List<String[]> records) {
@@ -170,14 +172,14 @@ public class LoginManager extends javax.swing.JFrame {
         jCheckBoxShowPassword = new javax.swing.JCheckBox();
         jButtonExit = new javax.swing.JButton();
         jButtonLogIn = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Group 3 | CP2 | A1102");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBackground(new java.awt.Color(192, 168, 137, 220));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 223, 87), new java.awt.Color(254, 44, 57)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextFieldUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -187,57 +189,54 @@ public class LoginManager extends javax.swing.JFrame {
         });
         jPanel2.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 160, -1));
 
-        jLabel1.setText("username");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, -1, -1));
+        jLabel1.setBackground(new java.awt.Color(192, 168, 137));
+        jLabel1.setText("Username");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, -1, -1));
 
-        jLabel2.setText("password");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 53, -1, -1));
+        jLabel2.setBackground(new java.awt.Color(192, 168, 137));
+        jLabel2.setText("Password");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 53, -1, -1));
         jPanel2.add(jPasswordFieldInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 160, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 14, 958, -1));
 
-        jCheckBoxShowPassword.setBackground(new java.awt.Color(204, 255, 204));
+        jCheckBoxShowPassword.setBackground(new java.awt.Color(148, 129, 93));
         jCheckBoxShowPassword.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jCheckBoxShowPassword.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBoxShowPassword.setText("Show Password");
         jCheckBoxShowPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxShowPasswordActionPerformed(evt);
             }
         });
-        jPanel2.add(jCheckBoxShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+        jPanel2.add(jCheckBoxShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonExit.setText("EXIT");
+        jButtonExit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 223, 87), new java.awt.Color(255, 223, 87), new java.awt.Color(254, 44, 57), new java.awt.Color(254, 44, 57)));
         jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExitActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel2.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 60, 25));
 
         jButtonLogIn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonLogIn.setText("LOG IN");
+        jButtonLogIn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 223, 87), new java.awt.Color(255, 223, 87), new java.awt.Color(254, 44, 57), new java.awt.Color(254, 44, 57)));
         jButtonLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogInActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+        jPanel2.add(jButtonLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 60, 25));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 270, 160));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 270, 160));
 
-        jLabel5.setBackground(new java.awt.Color(14, 49, 113));
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Motor PH - CP2 | Group 3: Login Page");
-        jLabel5.setOpaque(true);
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 40));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group3_motorph_payrollpaymentsystemv2/MotorPHHeader.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1000, 350));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group3_motorph_payrollpaymentsystemv2/Login Page.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 690));
 
         pack();
         setLocationRelativeTo(null);
@@ -322,9 +321,12 @@ public class LoginManager extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordFieldInput;
     private javax.swing.JTextField jTextFieldUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.jpg")));
+    }
 }

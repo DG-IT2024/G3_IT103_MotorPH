@@ -9,6 +9,7 @@ package group3_motorph_payrollpaymentsystemv2;
 
 import com.opencsv.CSVWriter;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -53,10 +54,11 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
         showDetails();
         csvRun();
+        
 
         // Initially set the text field to not editable
         jTextFieldOthers.setEditable(false);
-
+        setIconImage();
     }
 
     public String getEmployeeNumber() {
@@ -389,12 +391,12 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jDateChooserStartDate = new com.toedter.calendar.JDateChooser();
         jDateChooserEndDate = new com.toedter.calendar.JDateChooser();
-        jLabel5 = new javax.swing.JLabel();
         jButtonUpdate = new javax.swing.JButton();
         jButtonCancel = new javax.swing.JButton();
         jButtonSubmit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLeaveApplications = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
 
         jRadioButtonVacationLeave1.setText("Vacation Leave");
         jRadioButtonVacationLeave1.addActionListener(new java.awt.event.ActionListener() {
@@ -417,61 +419,44 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Group 3 | CP2 | A1102");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBackground(new java.awt.Color(222, 194, 110));
+        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(132, 220));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonLeaveApp.setText("Leave Application");
+        jButtonLeaveApp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonLeaveApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLeaveAppActionPerformed(evt);
             }
         });
+        jPanel2.add(jButtonLeaveApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 120, 110, 25));
 
         jButtonProfile.setText("Profile");
+        jButtonProfile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProfileActionPerformed(evt);
             }
         });
+        jPanel2.add(jButtonProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 40, 110, 25));
 
         jButtonPayroll.setText("Payroll");
+        jButtonPayroll.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonPayroll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPayrollActionPerformed(evt);
             }
         });
+        jPanel2.add(jButtonPayroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 80, 110, 25));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonPayroll)
-                    .addComponent(jButtonProfile))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jButtonLeaveApp)
-                .addGap(22, 22, 22))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jButtonProfile)
-                .addGap(44, 44, 44)
-                .addComponent(jButtonPayroll)
-                .addGap(33, 33, 33)
-                .addComponent(jButtonLeaveApp)
-                .addContainerGap(261, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 140, 220));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 460));
-
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setText("End Date :");
@@ -502,15 +487,17 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         });
         jPanel3.add(jTextFieldEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 390, -1));
 
+        jButtonSaveLeave.setBackground(new java.awt.Color(222, 194, 110));
         jButtonSaveLeave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonSaveLeave.setText("Save Leave Application");
         jButtonSaveLeave.setToolTipText("");
+        jButtonSaveLeave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSaveLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSaveLeaveActionPerformed(evt);
             }
         });
-        jPanel3.add(jButtonSaveLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 400, -1));
+        jPanel3.add(jButtonSaveLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 400, 25));
 
         jLabel6.setText("Reason for Leave :");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
@@ -544,41 +531,42 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jDateChooserEndDate.setDateFormatString("yyyy-MM-dd");
         jPanel3.add(jDateChooserEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 210, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 570, 220));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Leave Application");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 580, 39));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 720, 240));
 
         jButtonUpdate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonUpdate.setText("Update");
+        jButtonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, -1, -1));
+        getContentPane().add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 475, 110, 25));
 
         jButtonCancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCancel.setText("Cancel");
+        jButtonCancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, -1, -1));
+        getContentPane().add(jButtonCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 475, 110, 25));
 
         jButtonSubmit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonSubmit.setText("Submit");
+        jButtonSubmit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, -1, -1));
+        getContentPane().add(jButtonSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 475, 110, 25));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255, 0));
 
         jTableLeaveApplications.setAutoCreateRowSorter(true);
+        jTableLeaveApplications.setBackground(new java.awt.Color(255, 255, 255, 0));
         jTableLeaveApplications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -609,7 +597,12 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableLeaveApplications);
         jTableLeaveApplications.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 550, 130));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 720, 130));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group3_motorph_payrollpaymentsystemv2/Leave Application.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1020, 530));
 
         pack();
         setLocationRelativeTo(null);
@@ -867,4 +860,8 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldEmployeeNum;
     private javax.swing.JTextField jTextFieldOthers;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.jpg")));
+    }
 }
