@@ -566,7 +566,6 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255, 0));
 
         jTableLeaveApplications.setAutoCreateRowSorter(true);
-        jTableLeaveApplications.setBackground(new java.awt.Color(255, 255, 255, 0));
         jTableLeaveApplications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},

@@ -516,7 +516,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         getContentPane().add(jButtonApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 23));
 
         jTableLeaveApplications.setAutoCreateRowSorter(true);
-        jTableLeaveApplications.setBackground(new java.awt.Color(255, 255, 255, 0));
         jTableLeaveApplications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
