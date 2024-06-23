@@ -31,7 +31,7 @@ public class Filehandling {
     }
 
     public static void exportTableToCSV(JTable table) {
-        String csvFile = "MotorPH_Update.csv";
+        String csvFile = "MotorPHEmployeeData.csv";
         try (CSVWriter writer = new CSVWriter(new FileWriter(csvFile))) {
             DefaultTableModel model = (DefaultTableModel) table.getModel();
 

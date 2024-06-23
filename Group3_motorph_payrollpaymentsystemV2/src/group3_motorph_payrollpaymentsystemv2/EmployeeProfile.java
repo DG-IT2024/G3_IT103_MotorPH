@@ -2,7 +2,7 @@ package group3_motorph_payrollpaymentsystemv2;
 
 import group3_motorph_payrollpaymentsystemV2.Employee;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
-import java.awt.Color;
+
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+
 import javax.swing.table.DefaultTableModel;
 
 public class EmployeeProfile extends javax.swing.JFrame {
@@ -279,6 +279,11 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
         jDateChooserBirthday.setBackground(new java.awt.Color(255, 255, 255));
         jDateChooserBirthday.setToolTipText("");
+        jDateChooserBirthday.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jDateChooserBirthdayKeyTyped(evt);
+            }
+        });
         jPanel1.add(jDateChooserBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 210, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 67, 1040, 310));
@@ -514,12 +519,12 @@ public class EmployeeProfile extends javax.swing.JFrame {
         }
     }
 
-//    public static void allowOnlyDate(KeyEvent evt) {
-//        char c = evt.getKeyChar();
-//        if (!Character.isDigit(c) && c != '/' && c != '-' && c != '.') {
-//            evt.consume();
-//        }
-//    }
+    public static void allowOnlyDate(KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '/' && c != '-' && c != '.') {
+            evt.consume();
+        }
+    }
 
     public List<String> createTableIdList() {
         DefaultTableModel model = (DefaultTableModel) jTableEmployeeList.getModel();
@@ -688,8 +693,6 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextFieldRiceSubsidy.setEditable(condition);
         jTextFieldPhoneAllow.setEditable(condition);
         jTextFieldClothAllow.setEditable(condition);
-        
-    
 
     }
 
@@ -734,7 +737,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
         if (dateObj instanceof Date) {
             return (Date) dateObj;
         } else if (dateObj instanceof String) {
-            
+
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
             return dateFormat.parse((String) dateObj);
         } else {
@@ -819,13 +822,15 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     private void jTableEmployeeListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEmployeeListMouseClicked
         // TODO add your handling code here:
+
+        textFieldEditSetting(false);
+
         try {
 
             DefaultTableModel model = (DefaultTableModel) jTableEmployeeList.getModel();
             int selectedRowIndex = jTableEmployeeList.getSelectedRow();
             Object birthday = model.getValueAt(selectedRowIndex, 3);
             Date birthday_ = convertToDate(birthday);
-            
 
             jTextFieldEmployeeNum.setText(model.getValueAt(selectedRowIndex, 0).toString());
             jTextFieldLastName.setText(model.getValueAt(selectedRowIndex, 1).toString());
@@ -985,6 +990,11 @@ public class EmployeeProfile extends javax.swing.JFrame {
     private void jTextFieldStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldStatusActionPerformed
+
+    private void jDateChooserBirthdayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooserBirthdayKeyTyped
+        // TODO add your handling code here:
+       allowOnlyDate(evt);
+    }//GEN-LAST:event_jDateChooserBirthdayKeyTyped
 
     /**
      * @param args the command line arguments
