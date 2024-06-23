@@ -2,16 +2,21 @@ package group3_motorph_payrollpaymentsystemv2;
 
 import group3_motorph_payrollpaymentsystemV2.Employee;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class EmployeeProfile extends javax.swing.JFrame {
@@ -48,7 +53,6 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextFieldStatus = new javax.swing.JTextField();
         jTextFieldEmployeeNum = new javax.swing.JTextField();
         jTextFieldLastName = new javax.swing.JTextField();
-        jTextFieldBirthday = new javax.swing.JTextField();
         jTextFieldSSSnum = new javax.swing.JTextField();
         jTextFieldPagibigNum = new javax.swing.JTextField();
         jTextFieldTINnum = new javax.swing.JTextField();
@@ -72,6 +76,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextAreaAddress = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
         jTextFieldPosition = new javax.swing.JTextField();
+        jDateChooserBirthday = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableEmployeeList = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -98,38 +103,38 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Status");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 13, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
         jLabel3.setText("Employee No.");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 43, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
         jLabel4.setText("Last Name");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 13, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 23, -1, -1));
 
         jLabel6.setText("Birthday");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 103, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 113, -1, -1));
 
         jLabel7.setText("SSS No.");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 43, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, -1, -1));
 
         jLabel8.setText("Phone Number");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 73, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 83, -1, -1));
 
         jLabel9.setText("PhilHealth No.");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 73, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, -1, -1));
 
         jLabel10.setText("TIN");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 13, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
 
         jLabel11.setText("Pagibig No.");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 103, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
 
         jTextFieldStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldStatusActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 10, 190, -1));
+        jPanel1.add(jTextFieldStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 205, -1));
 
         jTextFieldEmployeeNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,26 +146,14 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldEmployeeNumKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 40, 190, -1));
+        jPanel1.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 205, -1));
 
         jTextFieldLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLastNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 10, 190, -1));
-
-        jTextFieldBirthday.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldBirthdayActionPerformed(evt);
-            }
-        });
-        jTextFieldBirthday.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldBirthdayKeyTyped(evt);
-            }
-        });
-        jPanel1.add(jTextFieldBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 100, 190, -1));
+        jPanel1.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 205, -1));
 
         jTextFieldSSSnum.setName(""); // NOI18N
         jTextFieldSSSnum.addActionListener(new java.awt.event.ActionListener() {
@@ -168,63 +161,64 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldSSSnumActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldSSSnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(772, 40, 190, -1));
-        jPanel1.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(772, 100, 190, -1));
+        jPanel1.add(jTextFieldSSSnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, 205, -1));
+        jPanel1.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 110, 205, -1));
 
         jTextFieldTINnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTINnumActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldTINnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(772, 10, 190, -1));
+        jPanel1.add(jTextFieldTINnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 205, -1));
 
+        jTextFieldPhoneNum.setEditable(false);
         jTextFieldPhoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhoneNumActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 70, 190, -1));
+        jPanel1.add(jTextFieldPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 205, -1));
 
         jTextFieldPhilhealthNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhilhealthNumActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPhilhealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(772, 70, 190, -1));
+        jPanel1.add(jTextFieldPhilhealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 205, -1));
 
         jLabel14.setText("Immediate Supervisor");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 103, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
 
         jTextFieldSupervisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldSupervisorActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 100, 190, -1));
+        jPanel1.add(jTextFieldSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 205, -1));
 
         jLabel15.setText("Rice Subsidy");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 253, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 263, -1, -1));
 
         jTextFieldRiceSubsidy.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldRiceSubsidyKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldRiceSubsidy, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 250, 190, -1));
+        jPanel1.add(jTextFieldRiceSubsidy, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 205, -1));
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 372, -1, -1));
 
         jLabel17.setText("Phone Allowance");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 253, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
 
         jTextFieldPhoneAllow.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldPhoneAllowKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldPhoneAllow, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 250, 190, -1));
+        jPanel1.add(jTextFieldPhoneAllow, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 205, -1));
 
         jLabel19.setText("Clothing  Allowance");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 253, -1, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, -1, -1));
 
         jTextFieldClothAllow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +230,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldClothAllowKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldClothAllow, new org.netbeans.lib.awtextra.AbsoluteConstraints(772, 250, 190, -1));
+        jPanel1.add(jTextFieldClothAllow, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 260, 205, -1));
 
         jTextFieldBasicSalary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,45 +242,50 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldBasicSalaryKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 220, 190, -1));
+        jPanel1.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 205, -1));
 
         jLabelBasicSalary.setText("Basic Salary");
-        jPanel1.add(jLabelBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 223, -1, -1));
+        jPanel1.add(jLabelBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 233, -1, -1));
 
         jTextFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFirstNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 40, 190, -1));
+        jPanel1.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 205, -1));
 
         jLabel5.setText("First Name");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 43, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 53, -1, -1));
 
         jLabel20.setText("Address");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 155, -1, -1));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 165, -1, -1));
 
         jTextAreaAddress.setColumns(20);
         jTextAreaAddress.setLineWrap(true);
         jTextAreaAddress.setRows(5);
         jScrollPane1.setViewportView(jTextAreaAddress);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 190, 56));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 207, 56));
 
         jLabel18.setText("Positon");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 73, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
 
         jTextFieldPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPositionActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 70, 190, -1));
+        jPanel1.add(jTextFieldPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 205, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 62, 970, 290));
+        jDateChooserBirthday.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooserBirthday.setToolTipText("");
+        jPanel1.add(jDateChooserBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 210, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 67, 1040, 310));
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255, 0));
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane2.setAutoscrolls(true);
         jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jScrollPane2MouseClicked(evt);
@@ -309,6 +308,8 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableEmployeeList.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableEmployeeList.setAutoscrolls(false);
         jTableEmployeeList.getTableHeader().setReorderingAllowed(false);
         jTableEmployeeList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -319,29 +320,46 @@ public class EmployeeProfile extends javax.swing.JFrame {
         if (jTableEmployeeList.getColumnModel().getColumnCount() > 0) {
             jTableEmployeeList.getColumnModel().getColumn(0).setMinWidth(50);
             jTableEmployeeList.getColumnModel().getColumn(0).setPreferredWidth(3);
+            jTableEmployeeList.getColumnModel().getColumn(0).setHeaderValue("Employee");
             jTableEmployeeList.getColumnModel().getColumn(1).setMinWidth(150);
             jTableEmployeeList.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTableEmployeeList.getColumnModel().getColumn(1).setHeaderValue("Last Name");
             jTableEmployeeList.getColumnModel().getColumn(2).setMinWidth(150);
             jTableEmployeeList.getColumnModel().getColumn(2).setPreferredWidth(150);
+            jTableEmployeeList.getColumnModel().getColumn(2).setHeaderValue("First Name");
             jTableEmployeeList.getColumnModel().getColumn(3).setMinWidth(100);
             jTableEmployeeList.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(3).setHeaderValue("Birthday");
             jTableEmployeeList.getColumnModel().getColumn(4).setMinWidth(200);
             jTableEmployeeList.getColumnModel().getColumn(4).setPreferredWidth(200);
+            jTableEmployeeList.getColumnModel().getColumn(4).setHeaderValue("Address");
             jTableEmployeeList.getColumnModel().getColumn(5).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(5).setHeaderValue("Phone Number");
             jTableEmployeeList.getColumnModel().getColumn(6).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(6).setHeaderValue("SSS #");
             jTableEmployeeList.getColumnModel().getColumn(7).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(7).setHeaderValue("Philhealth #");
             jTableEmployeeList.getColumnModel().getColumn(8).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(8).setHeaderValue("TIN ");
             jTableEmployeeList.getColumnModel().getColumn(9).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(9).setHeaderValue("Pag-ibig #");
             jTableEmployeeList.getColumnModel().getColumn(10).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(10).setHeaderValue("Status");
             jTableEmployeeList.getColumnModel().getColumn(11).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(11).setHeaderValue("Position");
             jTableEmployeeList.getColumnModel().getColumn(12).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(12).setHeaderValue("Immediate Supervisor");
             jTableEmployeeList.getColumnModel().getColumn(13).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(13).setHeaderValue("Basic Salary");
             jTableEmployeeList.getColumnModel().getColumn(14).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(14).setHeaderValue("Rice Subsidy");
             jTableEmployeeList.getColumnModel().getColumn(15).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(15).setHeaderValue("Phone Allowance");
             jTableEmployeeList.getColumnModel().getColumn(16).setMinWidth(100);
+            jTableEmployeeList.getColumnModel().getColumn(16).setHeaderValue("Clothing Allowance");
         }
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 359, 980, 240));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 385, 1040, 260));
 
         jPanel2.setBackground(new java.awt.Color(222, 194, 110));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -389,7 +407,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonUpdateDBSActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonUpdateDBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 25));
+        jPanel2.add(jButtonUpdateDBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, 25));
 
         jButtonViewEmployee.setText("VIEW EMPLOYEE");
         jButtonViewEmployee.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -398,7 +416,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonViewEmployeeActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonViewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 150, 25));
+        jPanel2.add(jButtonViewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 150, 25));
 
         jButtonSave.setText("SAVE");
         jButtonSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -416,12 +434,12 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonLeaveApplicationActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonLeaveApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, 25));
+        jPanel2.add(jButtonLeaveApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 150, 25));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 180, 280));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 200, 310));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group3_motorph_payrollpaymentsystemv2/EE Information Admin.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 620));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 670));
 
         pack();
         setLocationRelativeTo(null);
@@ -496,12 +514,12 @@ public class EmployeeProfile extends javax.swing.JFrame {
         }
     }
 
-    public static void allowOnlyDate(KeyEvent evt) {
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c) && c != '/' && c != '-' && c != '.') {
-            evt.consume();
-        }
-    }
+//    public static void allowOnlyDate(KeyEvent evt) {
+//        char c = evt.getKeyChar();
+//        if (!Character.isDigit(c) && c != '/' && c != '-' && c != '.') {
+//            evt.consume();
+//        }
+//    }
 
     public List<String> createTableIdList() {
         DefaultTableModel model = (DefaultTableModel) jTableEmployeeList.getModel();
@@ -538,7 +556,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldEmployeeNum.getText(),
                 jTextFieldLastName.getText(),
                 jTextFieldFirstName.getText(),
-                jTextFieldBirthday.getText(),
+                formatDate(jDateChooserBirthday.getDate()),
                 jTextAreaAddress.getText(),
                 jTextFieldPhoneNum.getText(),
                 jTextFieldSSSnum.getText(),
@@ -578,7 +596,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 model.setValueAt(jTextFieldEmployeeNum.getText(), selectedRowIndex, 0);
                 model.setValueAt(jTextFieldLastName.getText(), selectedRowIndex, 1);
                 model.setValueAt(jTextFieldFirstName.getText(), selectedRowIndex, 2);
-                model.setValueAt(jTextFieldBirthday.getText(), selectedRowIndex, 3);
+                model.setValueAt(formatDate(jDateChooserBirthday.getDate()), selectedRowIndex, 3);
                 model.setValueAt(jTextAreaAddress.getText(), selectedRowIndex, 4);
                 model.setValueAt(jTextFieldPhoneNum.getText(), selectedRowIndex, 5);
                 model.setValueAt(jTextFieldSSSnum.getText(), selectedRowIndex, 6);
@@ -633,7 +651,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextFieldEmployeeNum.setText("");
         jTextFieldLastName.setText("");
         jTextFieldFirstName.setText("");
-        jTextFieldBirthday.setText("");
+        jDateChooserBirthday.setDate(null);
         jTextFieldPhoneNum.setText("");
         jTextAreaAddress.setText("");
 
@@ -656,7 +674,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextFieldEmployeeNum.setEditable(condition);
         jTextFieldLastName.setEditable(condition);
         jTextFieldFirstName.setEditable(condition);
-        jTextFieldBirthday.setEditable(condition);
+        jDateChooserBirthday.setEnabled(condition);
         jTextAreaAddress.setEditable(condition);
         jTextFieldPhoneNum.setEditable(condition);
         jTextFieldSSSnum.setEditable(condition);
@@ -670,9 +688,59 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextFieldRiceSubsidy.setEditable(condition);
         jTextFieldPhoneAllow.setEditable(condition);
         jTextFieldClothAllow.setEditable(condition);
+        
+    
 
     }
 
+    private boolean checkEntries() {
+        if (isEmpty(jTextAreaAddress.getText())
+                || isEmpty(jTextFieldBasicSalary.getText())
+                || isEmpty(formatDate(jDateChooserBirthday.getDate()))
+                || isEmpty(jTextFieldClothAllow.getText())
+                || isEmpty(jTextFieldEmployeeNum.getText())
+                || isEmpty(jTextFieldFirstName.getText())
+                || isEmpty(jTextFieldLastName.getText())
+                || isEmpty(jTextFieldPagibigNum.getText())
+                || isEmpty(jTextFieldPhilhealthNum.getText())
+                || isEmpty(jTextFieldPhoneAllow.getText())
+                || isEmpty(jTextFieldPhoneNum.getText())
+                || isEmpty(jTextFieldPosition.getText())
+                || isEmpty(jTextFieldRiceSubsidy.getText())
+                || isEmpty(jTextFieldSSSnum.getText())
+                || isEmpty(jTextFieldStatus.getText())
+                || isEmpty(jTextFieldSupervisor.getText())
+                || isEmpty(jTextFieldTINnum.getText())) {
+
+            JOptionPane.showMessageDialog(null, "All fields must be filled in", "Error", JOptionPane.ERROR_MESSAGE);
+            return false; // Indicate that not all fields are filled
+        }
+        return true; // Indicate that all fields are filled
+    }
+
+    public boolean isEmpty(String text) {
+        return text.trim().isEmpty();
+    }
+
+    public static String formatDate(Date date) {
+        if (date == null) {
+            return "";
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        return dateFormat.format(date);
+    }
+
+    public Date convertToDate(Object dateObj) throws ParseException {
+        if (dateObj instanceof Date) {
+            return (Date) dateObj;
+        } else if (dateObj instanceof String) {
+            
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            return dateFormat.parse((String) dateObj);
+        } else {
+            throw new ParseException("Unparseable date: " + dateObj, 0);
+        }
+    }
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
         clearTextField();
@@ -751,80 +819,38 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     private void jTableEmployeeListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEmployeeListMouseClicked
         // TODO add your handling code here:
+        try {
 
-        DefaultTableModel model = (DefaultTableModel) jTableEmployeeList.getModel();
-        int selectedRowIndex = jTableEmployeeList.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) jTableEmployeeList.getModel();
+            int selectedRowIndex = jTableEmployeeList.getSelectedRow();
+            Object birthday = model.getValueAt(selectedRowIndex, 3);
+            Date birthday_ = convertToDate(birthday);
+            
 
-        jTextFieldEmployeeNum.setText(model.getValueAt(selectedRowIndex, 0).toString());
-        jTextFieldLastName.setText(model.getValueAt(selectedRowIndex, 1).toString());
-        jTextFieldFirstName.setText(model.getValueAt(selectedRowIndex, 2).toString());
-        jTextFieldBirthday.setText(model.getValueAt(selectedRowIndex, 3).toString());
-        jTextAreaAddress.setText(model.getValueAt(selectedRowIndex, 4).toString());
-        jTextFieldPhoneNum.setText(model.getValueAt(selectedRowIndex, 5).toString());
-        jTextFieldSSSnum.setText(model.getValueAt(selectedRowIndex, 6).toString());
-        jTextFieldPhilhealthNum.setText(model.getValueAt(selectedRowIndex, 7).toString());
-        jTextFieldTINnum.setText(model.getValueAt(selectedRowIndex, 8).toString());
-        jTextFieldPagibigNum.setText(model.getValueAt(selectedRowIndex, 9).toString());
-        jTextFieldStatus.setText(model.getValueAt(selectedRowIndex, 10).toString());
-        jTextFieldPosition.setText(model.getValueAt(selectedRowIndex, 11).toString());
-        jTextFieldSupervisor.setText(model.getValueAt(selectedRowIndex, 12).toString());
-        jTextFieldBasicSalary.setText(model.getValueAt(selectedRowIndex, 13).toString());
-        jTextFieldRiceSubsidy.setText(model.getValueAt(selectedRowIndex, 14).toString());
-        jTextFieldPhoneAllow.setText(model.getValueAt(selectedRowIndex, 15).toString());
-        jTextFieldClothAllow.setText(model.getValueAt(selectedRowIndex, 16).toString());
+            jTextFieldEmployeeNum.setText(model.getValueAt(selectedRowIndex, 0).toString());
+            jTextFieldLastName.setText(model.getValueAt(selectedRowIndex, 1).toString());
+            jTextFieldFirstName.setText(model.getValueAt(selectedRowIndex, 2).toString());
+            jDateChooserBirthday.setDate(birthday_);
+            jTextAreaAddress.setText(model.getValueAt(selectedRowIndex, 4).toString());
+            jTextFieldPhoneNum.setText(model.getValueAt(selectedRowIndex, 5).toString());
+            jTextFieldSSSnum.setText(model.getValueAt(selectedRowIndex, 6).toString());
+            jTextFieldPhilhealthNum.setText(model.getValueAt(selectedRowIndex, 7).toString());
+            jTextFieldTINnum.setText(model.getValueAt(selectedRowIndex, 8).toString());
+            jTextFieldPagibigNum.setText(model.getValueAt(selectedRowIndex, 9).toString());
+            jTextFieldStatus.setText(model.getValueAt(selectedRowIndex, 10).toString());
+            jTextFieldPosition.setText(model.getValueAt(selectedRowIndex, 11).toString());
+            jTextFieldSupervisor.setText(model.getValueAt(selectedRowIndex, 12).toString());
+            jTextFieldBasicSalary.setText(model.getValueAt(selectedRowIndex, 13).toString());
+            jTextFieldRiceSubsidy.setText(model.getValueAt(selectedRowIndex, 14).toString());
+            jTextFieldPhoneAllow.setText(model.getValueAt(selectedRowIndex, 15).toString());
+            jTextFieldClothAllow.setText(model.getValueAt(selectedRowIndex, 16).toString());
+
+        } catch (ParseException ex) {
+            Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_jTableEmployeeListMouseClicked
-
-    private void jTextFieldPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPositionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPositionActionPerformed
-
-    private void jTextFieldFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFirstNameActionPerformed
-
-    private void jTextFieldBasicSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBasicSalaryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldBasicSalaryActionPerformed
-
-    private void jTextFieldClothAllowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldClothAllowActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldClothAllowActionPerformed
-
-    private void jTextFieldSupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSupervisorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSupervisorActionPerformed
-
-    private void jTextFieldPhilhealthNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhilhealthNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPhilhealthNumActionPerformed
-
-    private void jTextFieldPhoneNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPhoneNumActionPerformed
-
-    private void jTextFieldTINnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTINnumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTINnumActionPerformed
-
-    private void jTextFieldSSSnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSSSnumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSSSnumActionPerformed
-
-    private void jTextFieldBirthdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBirthdayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldBirthdayActionPerformed
-
-    private void jTextFieldLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldLastNameActionPerformed
-
-    private void jTextFieldEmployeeNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmployeeNumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEmployeeNumActionPerformed
-
-    private void jTextFieldStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldStatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldStatusActionPerformed
 
     private void jButtonProfileAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileAddActionPerformed
         clearTextField();
@@ -844,48 +870,18 @@ public class EmployeeProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUpdateDBSActionPerformed
 
 
-    private void jTextFieldBasicSalaryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBasicSalaryKeyTyped
-        // TODO add your handling code here:
-        allowOnlyDigits(evt);
-    }//GEN-LAST:event_jTextFieldBasicSalaryKeyTyped
-
-    private void jTextFieldRiceSubsidyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRiceSubsidyKeyTyped
-        // TODO add your handling code here:
-
-        allowOnlyDigits(evt);
-    }//GEN-LAST:event_jTextFieldRiceSubsidyKeyTyped
-
-    private void jTextFieldPhoneAllowKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPhoneAllowKeyTyped
-        // TODO add your handling code here:
-        allowOnlyDigits(evt);
-
-    }//GEN-LAST:event_jTextFieldPhoneAllowKeyTyped
-
-    private void jTextFieldClothAllowKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldClothAllowKeyTyped
-        // TODO add your handling code here:
-        allowOnlyDigits(evt);
-    }//GEN-LAST:event_jTextFieldClothAllowKeyTyped
-
-    private void jTextFieldEmployeeNumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmployeeNumKeyTyped
-        // TODO add your handling code here:
-        allowOnlyDigits(evt);
-    }//GEN-LAST:event_jTextFieldEmployeeNumKeyTyped
-
-    private void jTextFieldBirthdayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBirthdayKeyTyped
-        // TODO add your handling code here:
-
-        allowOnlyDate(evt);
-    }//GEN-LAST:event_jTextFieldBirthdayKeyTyped
-
     private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jScrollPane2MouseClicked
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
+        if (!checkEntries()) {
+            return;  // If any field is empty, stop the save action
+        }
+
         ArrayList<Integer> list = new ArrayList<>();
         int rowCount = jTableEmployeeList.getRowCount();
-        int lastNumber = 0;
 
         for (int i = 0; i < rowCount; i++) {
             list.add(Integer.parseInt(jTableEmployeeList.getValueAt(i, 0).toString()));
@@ -915,6 +911,80 @@ public class EmployeeProfile extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonLeaveApplicationActionPerformed
+
+    private void jTextFieldPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPositionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPositionActionPerformed
+
+    private void jTextFieldFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFirstNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFirstNameActionPerformed
+
+    private void jTextFieldBasicSalaryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBasicSalaryKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigits(evt);
+    }//GEN-LAST:event_jTextFieldBasicSalaryKeyTyped
+
+    private void jTextFieldBasicSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBasicSalaryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBasicSalaryActionPerformed
+
+    private void jTextFieldClothAllowKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldClothAllowKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigits(evt);
+    }//GEN-LAST:event_jTextFieldClothAllowKeyTyped
+
+    private void jTextFieldClothAllowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldClothAllowActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldClothAllowActionPerformed
+
+    private void jTextFieldPhoneAllowKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPhoneAllowKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigits(evt);
+    }//GEN-LAST:event_jTextFieldPhoneAllowKeyTyped
+
+    private void jTextFieldRiceSubsidyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRiceSubsidyKeyTyped
+        // TODO add your handling code here:
+
+        allowOnlyDigits(evt);
+    }//GEN-LAST:event_jTextFieldRiceSubsidyKeyTyped
+
+    private void jTextFieldSupervisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSupervisorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSupervisorActionPerformed
+
+    private void jTextFieldPhilhealthNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhilhealthNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPhilhealthNumActionPerformed
+
+    private void jTextFieldPhoneNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPhoneNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPhoneNumActionPerformed
+
+    private void jTextFieldTINnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTINnumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTINnumActionPerformed
+
+    private void jTextFieldSSSnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSSSnumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSSSnumActionPerformed
+
+    private void jTextFieldLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldLastNameActionPerformed
+
+    private void jTextFieldEmployeeNumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmployeeNumKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigits(evt);
+    }//GEN-LAST:event_jTextFieldEmployeeNumKeyTyped
+
+    private void jTextFieldEmployeeNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmployeeNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEmployeeNumActionPerformed
+
+    private void jTextFieldStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -968,6 +1038,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonUpdateDBS;
     private javax.swing.JButton jButtonViewEmployee;
+    private com.toedter.calendar.JDateChooser jDateChooserBirthday;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -994,7 +1065,6 @@ public class EmployeeProfile extends javax.swing.JFrame {
     private javax.swing.JTable jTableEmployeeList;
     private javax.swing.JTextArea jTextAreaAddress;
     private javax.swing.JTextField jTextFieldBasicSalary;
-    private javax.swing.JTextField jTextFieldBirthday;
     private javax.swing.JTextField jTextFieldClothAllow;
     private javax.swing.JTextField jTextFieldEmployeeNum;
     private javax.swing.JTextField jTextFieldFirstName;

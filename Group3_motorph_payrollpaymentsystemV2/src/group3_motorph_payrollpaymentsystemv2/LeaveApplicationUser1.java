@@ -54,7 +54,6 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
         showDetails();
         csvRun();
-        
 
         // Initially set the text field to not editable
         jTextFieldOthers.setEditable(false);
@@ -319,7 +318,7 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         String lastName = getLastName();
         String firstName = getFirstName();
 
-        String csvFile = "leave_applications_2.csv";
+        String csvFile = "leave_applications.csv";
         try (CSVWriter writer = new CSVWriter(new FileWriter(csvFile))) {
 
             String[] columnNames = {"entryID", "employeeNumber", "lastName", "firstName", "leaveStatus",
@@ -565,7 +564,6 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255, 0));
 
-        jTableLeaveApplications.setAutoCreateRowSorter(true);
         jTableLeaveApplications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -655,7 +653,7 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
             leaveReason = leaveReason + "_" + jTextFieldOthers.getText();
         }
 
-        // Validate input fields
+        
         if (startDate.isEmpty() || endDate.isEmpty() || leaveReason.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields must be filled out", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -679,12 +677,9 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
             leaveDays});
 
         // Clear input fields
-        jDateChooserStartDate.setDate(
-                null);
-        jDateChooserEndDate.setDate(
-                null);
-        jComboBoxLeaveReason.setSelectedIndex(
-                0);
+        jDateChooserStartDate.setDate(null);
+        jDateChooserEndDate.setDate(null);
+        jComboBoxLeaveReason.setSelectedIndex(0);
 
     }//GEN-LAST:event_jButtonSaveLeaveActionPerformed
 

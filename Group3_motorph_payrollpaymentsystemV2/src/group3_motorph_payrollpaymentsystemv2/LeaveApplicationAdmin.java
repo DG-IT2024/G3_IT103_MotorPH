@@ -6,7 +6,11 @@ import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +39,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
     }
 
     public List<LeaveDetails> parseRecords(List<String[]> records) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         for (String[] record : records) {
             String entryNum = record[0];
@@ -53,6 +58,27 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                     leaveReason, startDate, endDate, leaveDay);
             employees.add(employee);
         }
+        
+        Collections.sort(employees, (o1, o2) -> {
+            int employeeNumberComparison = Integer.compare(
+                    Integer.parseInt(o1.getEmployeeNumber()),
+                    Integer.parseInt(o2.getEmployeeNumber()));
+            if (employeeNumberComparison != 0) {
+                return employeeNumberComparison;
+            }
+       
+            Date date1;
+            Date date2;
+            try {
+                date1 = dateFormat.parse(o1.getSubmittedDate());
+                date2 = dateFormat.parse(o1.getSubmittedDate());
+            } catch (ParseException e) {
+                throw new IllegalArgumentException(e);
+            }
+            return date1.compareTo(date2);
+        });
+           
+
         return employees;
     }
 
@@ -203,10 +229,9 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
 
         }
     }
-/*
+
     public void updateCSV() {
-        String csvFile = "leave_applications_2.csv";
-        DefaultTableModel tableModel = (DefaultTableModel) jTableLeaveApplications.getModel();
+        String csvFile = "leave_applications.csv";
 
         try (CSVWriter writer = new CSVWriter(new FileWriter(csvFile))) {
             // Write header
@@ -215,13 +240,19 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
             writer.writeNext(header);
 
             // Write rows
-            int rowCount = tableModel.getRowCount();
-            int columnCount = tableModel.getColumnCount();
-            for (int i = 0; i < rowCount; i++) {
-                String[] row = new String[columnCount];
-                for (int j = 0; j < columnCount; j++) {
-                    row[j] = tableModel.getValueAt(i, j).toString();
-                }
+            for (LeaveDetails employee : employees) {
+                String[] row = {
+                    employee.getentryNum(),
+                    employee.getEmployeeNumber(),
+                    employee.getLastName(),
+                    employee.getFirstName(),
+                    employee.getLeaveStatus(),
+                    employee.getSubmittedDate(),
+                    employee.getLeaveReason(),
+                    employee.getStartDate(),
+                    employee.getEndDate(),
+                    employee.getLeaveDay()
+                };
                 writer.writeNext(row);
             }
 
@@ -230,40 +261,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Failed to update your record.");
         }
     }
-
-  */
-     public void updateCSV() {
-    String csvFile = "leave_applications_2.csv";
-    
-    try (CSVWriter writer = new CSVWriter(new FileWriter(csvFile))) {
-        // Write header
-        String[] header = {"Entry ID", "Employee Number", "Last Name", "First Name", "Leave Status", 
-                           "Date Filed", "Reason for Leave", "Start Date", "End Date", "Leave Days"};
-        writer.writeNext(header);
-        
-        // Write rows
-        for (LeaveDetails employee : employees) {
-            String[] row = {
-                employee.getentryNum(),
-                employee.getEmployeeNumber(),
-                employee.getLastName(),
-                employee.getFirstName(),
-                employee.getLeaveStatus(),
-                employee.getSubmittedDate(),
-                employee.getLeaveReason(),
-                employee.getStartDate(),
-                employee.getEndDate(),
-                employee.getLeaveDay()
-            };
-            writer.writeNext(row);
-        }
-        
-        JOptionPane.showMessageDialog(null, "Record updated successfully");
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Failed to update your record.");
-    }
-}
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -515,7 +512,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 23));
 
-        jTableLeaveApplications.setAutoCreateRowSorter(true);
         jTableLeaveApplications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -660,13 +656,13 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         } else {
             informationTable(employees);
         }
-        
+
 
     }//GEN-LAST:event_jRadioButtonPendingActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
-        
+
         updateCSV();
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
