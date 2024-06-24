@@ -713,7 +713,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
     }
 
     public void textFieldEditSetting(boolean condition) {
-
+/*
         jTextFieldEmployeeNum.setEditable(false);
         jTextFieldLastName.setEditable(condition);
         jTextFieldFirstName.setEditable(condition);
@@ -731,7 +731,27 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextFieldRiceSubsidy.setEditable(condition);
         jTextFieldPhoneAllow.setEditable(condition);
         jTextFieldClothAllow.setEditable(condition);
-
+*/
+         jTextFieldEmployeeNum.setEnabled(false);
+        jTextFieldLastName.setEnabled(condition);
+        jTextFieldFirstName.setEnabled(condition);
+        jDateChooserBirthday.setEnabled(condition);
+        jTextAreaAddress.setEnabled(condition);
+        jTextFieldPhoneNum.setEnabled(condition);
+        jTextFieldSSSnum.setEnabled(condition);
+        jTextFieldPhilhealthNum.setEnabled(condition);
+        jTextFieldTINnum.setEnabled(condition);
+        jTextFieldPagibigNum.setEnabled(condition);
+        jTextFieldStatus.setEnabled(condition);
+        jTextFieldPosition.setEnabled(condition);
+        jTextFieldSupervisor.setEnabled(condition);
+        jTextFieldBasicSalary.setEnabled(condition);
+        jTextFieldRiceSubsidy.setEnabled(condition);
+        jTextFieldPhoneAllow.setEnabled(condition);
+        jTextFieldClothAllow.setEnabled(condition);
+        
+        
+        
     }
 
     private boolean checkEntries() {
