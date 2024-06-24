@@ -58,7 +58,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                     leaveReason, startDate, endDate, leaveDay);
             employees.add(employee);
         }
-        
+
         Collections.sort(employees, (o1, o2) -> {
             int employeeNumberComparison = Integer.compare(
                     Integer.parseInt(o1.getEmployeeNumber()),
@@ -66,7 +66,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
             if (employeeNumberComparison != 0) {
                 return employeeNumberComparison;
             }
-       
+
             Date date1;
             Date date2;
             try {
@@ -77,7 +77,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
             }
             return date1.compareTo(date2);
         });
-           
 
         return employees;
     }
@@ -662,8 +661,15 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
+        int response = JOptionPane.showConfirmDialog(null, "Do you want to proceed with saving the changes to the records?",
+                "Update Records Confirmation",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
 
-        updateCSV();
+        if (response == JOptionPane.YES_OPTION) {
+            updateCSV();
+        }
+
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     /**

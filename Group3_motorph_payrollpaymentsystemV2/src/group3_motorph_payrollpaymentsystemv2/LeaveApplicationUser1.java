@@ -757,7 +757,15 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
     private void jButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubmitActionPerformed
         // TODO add your handling code here:
-        updateCSV();
+        int response = JOptionPane.showConfirmDialog(null, "Do you want to proceed with submitting your leave application?",
+                "Update Records Confirmation",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            updateCSV();
+        }
+                
     }//GEN-LAST:event_jButtonSubmitActionPerformed
 
     private void jRadioButtonVacationLeave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVacationLeave1ActionPerformed

@@ -752,17 +752,12 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     private void jButtonProfileDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileDeleteActionPerformed
 
-        // Ask if user wants to proceed with deleting the employee
+       
         int response = JOptionPane.showConfirmDialog(null, "Do you want to proceed with deleting the entry?",
                 "Delete Entry Confirmation",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-
-        // JOptionPane returns: 1 = No, 0 = Yes
-        System.out.println(response);
-        System.out.println(JOptionPane.YES_OPTION);
-        // Check the user's response
-
+    
         if (response == JOptionPane.YES_OPTION) {
             int selectedRowIndex = jTableEmployeeList.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) jTableEmployeeList.getModel();
@@ -871,7 +866,15 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     private void jButtonUpdateDBSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateDBSActionPerformed
         // TODO add your handling code here:
-        Filehandling.exportTableToCSV(jTableEmployeeList);
+        int response = JOptionPane.showConfirmDialog(null, "Do you want to proceed with saving the changes to the database?",
+                "Update Database Confirmation",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+    
+        if (response == JOptionPane.YES_OPTION) {
+ Filehandling.exportTableToCSV(jTableEmployeeList);
+        }
+      
     }//GEN-LAST:event_jButtonUpdateDBSActionPerformed
 
 
@@ -880,11 +883,11 @@ public class EmployeeProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jScrollPane2MouseClicked
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        // TODO add your handling code here:
+        
         if (!checkEntries()) {
             return;  // If any field is empty, stop the save action
         }
-
+        
         ArrayList<Integer> list = new ArrayList<>();
         int rowCount = jTableEmployeeList.getRowCount();
 
