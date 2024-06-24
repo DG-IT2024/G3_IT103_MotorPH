@@ -5,6 +5,7 @@
 package group3_motorph_payrollpaymentsystemv2;
 
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Year;
@@ -37,6 +38,7 @@ public class PayrollSummary extends javax.swing.JFrame {
 
         populatecomboboxCoveredPeriods();
         populateByEmployeeNum();
+        setIconImage();
     }
 
     private void csvRun(String csvFile) throws FileNotFoundException, IOException {
@@ -220,6 +222,7 @@ public class PayrollSummary extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Group 3 | CP2 | A1102");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255, 0));
@@ -285,7 +288,7 @@ public class PayrollSummary extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 13, -1, -1));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 13, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 540, 40));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 55, 540, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group3_motorph_payrollpaymentsystemv2/Payroll Summary.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -362,4 +365,8 @@ public class PayrollSummary extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTablePayrollSummary;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.jpg")));
+    }
 }
