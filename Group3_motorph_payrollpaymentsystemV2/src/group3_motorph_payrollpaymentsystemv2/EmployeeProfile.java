@@ -104,39 +104,44 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Status");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 13, -1, 22));
 
         jLabel3.setText("Employee No.");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 43, -1, -1));
 
         jLabel4.setText("Last Name");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 23, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 13, -1, -1));
 
         jLabel6.setText("Birthday");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 113, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 103, -1, -1));
 
         jLabel7.setText("SSS No.");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 43, -1, -1));
 
         jLabel8.setText("Phone Number");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 83, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, -1, -1));
 
         jLabel9.setText("PhilHealth No.");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 80, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 73, -1, -1));
 
         jLabel10.setText("TIN");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 13, -1, -1));
 
         jLabel11.setText("Pagibig No.");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 103, -1, -1));
 
+        jTextFieldStatus.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldStatus.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldStatusActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 205, -1));
+        jPanel1.add(jTextFieldStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 10, 190, 22));
 
+        jTextFieldEmployeeNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldEmployeeNum.setCaretColor(new java.awt.Color(51, 51, 51));
+        jTextFieldEmployeeNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldEmployeeNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmployeeNumActionPerformed(evt);
@@ -147,15 +152,19 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldEmployeeNumKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 205, -1));
+        jPanel1.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 40, 190, 22));
 
+        jTextFieldLastName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldLastName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLastNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 205, -1));
+        jPanel1.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 190, 22));
 
+        jTextFieldSSSnum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldSSSnum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldSSSnum.setName(""); // NOI18N
         jTextFieldSSSnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,15 +176,19 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldSSSnumKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldSSSnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, 205, -1));
+        jPanel1.add(jTextFieldSSSnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 40, 190, 22));
 
+        jTextFieldPagibigNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldPagibigNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPagibigNum.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldPagibigNumKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 110, 205, -1));
+        jPanel1.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, 190, 22));
 
+        jTextFieldTINnum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldTINnum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldTINnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTINnumActionPerformed(evt);
@@ -186,16 +199,21 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldTINnumKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldTINnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 205, -1));
+        jPanel1.add(jTextFieldTINnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 190, 22));
 
         jTextFieldPhoneNum.setEditable(false);
+        jTextFieldPhoneNum.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldPhoneNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldPhoneNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPhoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhoneNumActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 205, -1));
+        jPanel1.add(jTextFieldPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 190, 22));
 
+        jTextFieldPhilhealthNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldPhilhealthNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPhilhealthNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhilhealthNumActionPerformed(evt);
@@ -206,42 +224,50 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldPhilhealthNumKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldPhilhealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 205, -1));
+        jPanel1.add(jTextFieldPhilhealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 190, 22));
 
         jLabel14.setText("Immediate Supervisor");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 103, -1, -1));
 
+        jTextFieldSupervisor.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldSupervisor.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldSupervisor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldSupervisorActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 205, -1));
+        jPanel1.add(jTextFieldSupervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 100, 190, 22));
 
         jLabel15.setText("Rice Subsidy");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 263, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 253, -1, -1));
 
+        jTextFieldRiceSubsidy.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldRiceSubsidy.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldRiceSubsidy.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldRiceSubsidyKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldRiceSubsidy, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 205, -1));
+        jPanel1.add(jTextFieldRiceSubsidy, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 190, 22));
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 372, -1, -1));
 
         jLabel17.setText("Phone Allowance");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 253, -1, -1));
 
+        jTextFieldPhoneAllow.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldPhoneAllow.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPhoneAllow.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldPhoneAllowKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldPhoneAllow, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 205, -1));
+        jPanel1.add(jTextFieldPhoneAllow, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 250, 190, 22));
 
         jLabel19.setText("Clothing  Allowance");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, -1, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 253, -1, -1));
 
+        jTextFieldClothAllow.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldClothAllow.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldClothAllow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldClothAllowActionPerformed(evt);
@@ -252,8 +278,10 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldClothAllowKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldClothAllow, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 260, 205, -1));
+        jPanel1.add(jTextFieldClothAllow, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, 190, 22));
 
+        jTextFieldBasicSalary.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldBasicSalary.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldBasicSalary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBasicSalaryActionPerformed(evt);
@@ -264,51 +292,58 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldBasicSalaryKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 205, -1));
+        jPanel1.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 190, 22));
 
         jLabelBasicSalary.setText("Basic Salary");
-        jPanel1.add(jLabelBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 233, -1, -1));
+        jPanel1.add(jLabelBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 223, -1, -1));
 
+        jTextFieldFirstName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldFirstName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFirstNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 205, -1));
+        jPanel1.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 190, 22));
 
         jLabel5.setText("First Name");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 53, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 43, -1, -1));
 
         jLabel20.setText("Address");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 165, -1, -1));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 158, -1, -1));
 
         jTextAreaAddress.setColumns(20);
         jTextAreaAddress.setLineWrap(true);
         jTextAreaAddress.setRows(5);
+        jTextAreaAddress.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextAreaAddress.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jScrollPane1.setViewportView(jTextAreaAddress);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 207, 56));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 190, 56));
 
         jLabel18.setText("Positon");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 73, -1, -1));
 
+        jTextFieldPosition.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldPosition.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPosition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPositionActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 205, -1));
+        jPanel1.add(jTextFieldPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 70, 190, 22));
 
         jDateChooserBirthday.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooserBirthday.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jDateChooserBirthday.setToolTipText("");
         jDateChooserBirthday.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jDateChooserBirthdayKeyTyped(evt);
             }
         });
-        jPanel1.add(jDateChooserBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 210, -1));
+        jPanel1.add(jDateChooserBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 190, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 67, 1040, 310));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 62, 980, 280));
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255, 0));
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -386,7 +421,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
             jTableEmployeeList.getColumnModel().getColumn(16).setHeaderValue("Clothing Allowance");
         }
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 385, 1040, 260));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 347, 980, 250));
 
         jPanel2.setBackground(new java.awt.Color(222, 194, 110));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -398,7 +433,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonClearActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 25));
+        jPanel2.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 22));
 
         jButtonProfileAdd.setText("ADD");
         jButtonProfileAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -407,7 +442,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonProfileAddActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonProfileAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 150, 25));
+        jPanel2.add(jButtonProfileAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 64, 150, 22));
 
         jButtonProfileUpdate.setText("UPDATE");
         jButtonProfileUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -416,7 +451,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonProfileUpdateActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonProfileUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 150, 25));
+        jPanel2.add(jButtonProfileUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 37, 150, 22));
 
         jButtonProfileDelete.setText("DELETE");
         jButtonProfileDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -425,7 +460,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonProfileDeleteActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonProfileDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 150, 25));
+        jPanel2.add(jButtonProfileDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 91, 150, 22));
 
         jButtonUpdateDBS.setText("UPDATE DATABASE");
         jButtonUpdateDBS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -434,7 +469,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonUpdateDBSActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonUpdateDBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, 25));
+        jPanel2.add(jButtonUpdateDBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 159, 150, 22));
 
         jButtonViewEmployee.setText("VIEW EMPLOYEE");
         jButtonViewEmployee.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -443,7 +478,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonViewEmployeeActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonViewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 150, 25));
+        jPanel2.add(jButtonViewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 186, 150, 22));
 
         jButtonSave.setText("SAVE");
         jButtonSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -452,7 +487,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonSaveActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, 25));
+        jPanel2.add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 150, 22));
 
         jButtonLeaveApplication.setText("LEAVE APPLICATION");
         jButtonLeaveApplication.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -461,7 +496,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonLeaveApplicationActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonLeaveApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 25));
+        jPanel2.add(jButtonLeaveApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 213, 150, 22));
 
         jButtonExit.setText("EXIT");
         jButtonExit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -470,12 +505,12 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonExitActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, 25));
+        jPanel2.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 247, 150, 22));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 200, 310));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 180, 280));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group3_motorph_payrollpaymentsystemv2/EE Information Admin.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 670));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 620));
 
         pack();
         setLocationRelativeTo(null);

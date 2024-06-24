@@ -305,6 +305,8 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 13, -1, -1));
 
         jTextFieldEmployeeNum.setEditable(false);
+        jTextFieldEmployeeNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldEmployeeNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldEmployeeNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmployeeNumActionPerformed(evt);
@@ -315,91 +317,105 @@ public class PayrollProcessing extends javax.swing.JFrame {
                 jTextFieldEmployeeNumKeyTyped(evt);
             }
         });
-        jPanel1.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 170, -1));
+        jPanel1.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 170, 22));
 
         jLabel4.setText("Last Name");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 43, -1, -1));
 
         jTextFieldLastName.setEditable(false);
+        jTextFieldLastName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldLastName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLastNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 170, -1));
+        jPanel1.add(jTextFieldLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 170, 22));
 
         jLabel5.setText("First Name");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, -1, -1));
 
         jTextFieldFirstName.setEditable(false);
+        jTextFieldFirstName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldFirstName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFirstNameActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 170, -1));
+        jPanel1.add(jTextFieldFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 170, 22));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 13, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel6.setText("Covered Period");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 33, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 13, -1, -1));
 
+        jComboBoxCoveredYear.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         jComboBoxCoveredYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxCoveredYearActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxCoveredYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 75, 79, -1));
+        jPanel1.add(jComboBoxCoveredYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 55, 79, -1));
 
         jLabel7.setText("Worked Hours");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 103, -1, -1));
 
         jTextFieldWorkedHours.setEditable(false);
+        jTextFieldWorkedHours.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldWorkedHours.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldWorkedHours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldWorkedHoursActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldWorkedHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 170, -1));
+        jPanel1.add(jTextFieldWorkedHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 170, 22));
 
         jButtonClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonClear.setText("Clear");
+        jButtonClear.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, 23));
+        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 90, 83, 23));
 
         jLabel8.setText("Gross Income");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 193, -1, -1));
 
         jTextFieldGrossIncome.setEditable(false);
+        jTextFieldGrossIncome.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldGrossIncome.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldGrossIncome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldGrossIncomeActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldGrossIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 170, -1));
+        jPanel1.add(jTextFieldGrossIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 170, 22));
 
         jLabel9.setText("SSS Deduction ");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 223, -1, -1));
 
         jTextSssDeduction.setEditable(false);
+        jTextSssDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextSssDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextSssDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextSssDeductionActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextSssDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 170, -1));
+        jPanel1.add(jTextSssDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 170, 22));
 
         jTextFieldPhilHealthDeduction.setEditable(false);
+        jTextFieldPhilHealthDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldPhilHealthDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPhilHealthDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhilHealthDeductionActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPhilHealthDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 170, -1));
+        jPanel1.add(jTextFieldPhilHealthDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 170, 22));
 
         jLabel10.setText("PhilHealth Deduction ");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 253, -1, -1));
@@ -408,79 +424,93 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 283, -1, -1));
 
         jTextFieldPagibigDeduction.setEditable(false);
+        jTextFieldPagibigDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldPagibigDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPagibigDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPagibigDeductionActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldPagibigDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 170, -1));
+        jPanel1.add(jTextFieldPagibigDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 170, 22));
 
         jLabel12.setText("Withholding Tax");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 313, -1, -1));
 
         jTextFieldWHT.setEditable(false);
+        jTextFieldWHT.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldWHT.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldWHT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldWHTActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldWHT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 170, -1));
+        jPanel1.add(jTextFieldWHT, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 170, 22));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel13.setText("Summary");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
 
         jLabel14.setText("Gross Income");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 163, -1, -1));
 
         jTextFieldGrossIncome_S.setEditable(false);
+        jTextFieldGrossIncome_S.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldGrossIncome_S.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldGrossIncome_S.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldGrossIncome_SActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldGrossIncome_S, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 112, -1));
+        jPanel1.add(jTextFieldGrossIncome_S, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 112, 22));
 
         jLabel15.setText("Benefits");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 193, -1, -1));
 
         jTextFieldBenefits.setEditable(false);
+        jTextFieldBenefits.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldBenefits.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldBenefits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBenefitsActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldBenefits, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 112, -1));
+        jPanel1.add(jTextFieldBenefits, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 112, 22));
 
         jTextFieldTotalDeductions.setEditable(false);
+        jTextFieldTotalDeductions.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldTotalDeductions.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldTotalDeductions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTotalDeductionsActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldTotalDeductions, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 112, -1));
+        jPanel1.add(jTextFieldTotalDeductions, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 112, 22));
 
         jLabel16.setText("Total Deductions");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 223, -1, -1));
 
         jTextFieldTakeHomePay.setEditable(false);
+        jTextFieldTakeHomePay.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldTakeHomePay.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldTakeHomePay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTakeHomePayActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldTakeHomePay, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 112, -1));
+        jPanel1.add(jTextFieldTakeHomePay, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 112, 22));
 
         jLabel17.setText("TAKE-HOME PAY");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 253, -1, -1));
 
         jTextFieldHourlyRate.setEditable(false);
+        jTextFieldHourlyRate.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldHourlyRate.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldHourlyRate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldHourlyRateActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldHourlyRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 170, -1));
+        jPanel1.add(jTextFieldHourlyRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 170, 22));
 
         jLabel18.setText("Basic Salary");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 133, -1, -1));
@@ -489,13 +519,16 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 163, -1, -1));
 
         jTextFieldBasicSalary.setEditable(false);
+        jTextFieldBasicSalary.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldBasicSalary.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldBasicSalary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBasicSalaryActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 170, -1));
+        jPanel1.add(jTextFieldBasicSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 170, 22));
 
+        jComboBoxCoveredMonth.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         jComboBoxCoveredMonth.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jComboBoxCoveredMonthMouseClicked(evt);
@@ -506,40 +539,43 @@ public class PayrollProcessing extends javax.swing.JFrame {
                 jComboBoxCoveredMonthActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxCoveredMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 75, 112, -1));
+        jPanel1.add(jComboBoxCoveredMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 55, 112, -1));
 
         jLabel20.setText("Month");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 56, -1, -1));
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 36, -1, -1));
 
         jLabel23.setText("Year");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 56, -1, -1));
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 36, -1, -1));
 
         jButtonAddtoRecords1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonAddtoRecords1.setText("Payroll Summary");
+        jButtonAddtoRecords1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         jButtonAddtoRecords1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddtoRecords1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAddtoRecords1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 140, 23));
+        jPanel1.add(jButtonAddtoRecords1, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 320, 140, 23));
 
         jButtonAddtoRecords2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonAddtoRecords2.setText("Add to Records");
+        jButtonAddtoRecords2.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         jButtonAddtoRecords2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddtoRecords2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAddtoRecords2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 140, 23));
+        jPanel1.add(jButtonAddtoRecords2, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 290, 140, 23));
 
         jButtonCompute1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCompute1.setText("Compute");
+        jButtonCompute1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         jButtonCompute1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCompute1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCompute1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, 23));
+        jPanel1.add(jButtonCompute1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 83, 23));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 620, 360));
 

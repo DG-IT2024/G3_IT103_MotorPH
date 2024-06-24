@@ -287,8 +287,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jTextFieldEndDate = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextFieldEmployeeNum6 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jTextFieldLeaveDays = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -349,61 +347,73 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 13, -1, -1));
 
         jTextFieldEmployeeNum.setEditable(false);
+        jTextFieldEmployeeNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldEmployeeNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldEmployeeNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmployeeNumActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 180, -1));
+        jPanel3.add(jTextFieldEmployeeNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 180, 22));
 
         jLabel8.setText("Employee Name");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 43, 90, -1));
 
         jTextFieldEmployeeName.setEditable(false);
+        jTextFieldEmployeeName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldEmployeeName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldEmployeeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmployeeNameActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 180, -1));
+        jPanel3.add(jTextFieldEmployeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 180, 22));
 
         jTextFieldDateFiled.setEditable(false);
+        jTextFieldDateFiled.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldDateFiled.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldDateFiled.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldDateFiledActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldDateFiled, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 180, -1));
+        jPanel3.add(jTextFieldDateFiled, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 180, 22));
 
         jLabel3.setText("Date Filed");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 73, -1, -1));
 
         jTextFieldLeaveReason.setEditable(false);
+        jTextFieldLeaveReason.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldLeaveReason.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldLeaveReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLeaveReasonActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldLeaveReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 180, -1));
+        jPanel3.add(jTextFieldLeaveReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 180, 22));
 
         jLabel10.setText("Reason for Leave");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 103, 100, -1));
 
         jTextFieldStartDate.setEditable(false);
+        jTextFieldStartDate.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldStartDate.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldStartDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldStartDateActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 180, -1));
+        jPanel3.add(jTextFieldStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 180, 22));
 
         jTextFieldEndDate.setEditable(false);
+        jTextFieldEndDate.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldEndDate.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldEndDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEndDateActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 180, -1));
+        jPanel3.add(jTextFieldEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 180, 22));
 
         jLabel11.setText("End Date");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 163, -1, -1));
@@ -411,27 +421,18 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jLabel12.setText("Start Date");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 133, -1, -1));
 
-        jTextFieldEmployeeNum6.setEditable(false);
-        jTextFieldEmployeeNum6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEmployeeNum6ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jTextFieldEmployeeNum6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 180, -1));
-
-        jLabel13.setText("End Date");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 163, -1, -1));
-
         jLabel14.setText("Leave Days");
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 193, -1, -1));
 
         jTextFieldLeaveDays.setEditable(false);
+        jTextFieldLeaveDays.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldLeaveDays.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldLeaveDays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLeaveDaysActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextFieldLeaveDays, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 180, -1));
+        jPanel3.add(jTextFieldLeaveDays, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 180, 22));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 340, 220));
 
@@ -454,21 +455,31 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         jLabel9.setText("Paternity Leave");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 133, -1, -1));
 
+        jTextFieldSickLeave.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldSickLeave.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldSickLeave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldSickLeaveActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldSickLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 70, 100, -1));
-        jPanel1.add(jTextFieldVacationLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 100, 100, -1));
-        jPanel1.add(jTextFieldPaternity, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 130, 100, -1));
+        jPanel1.add(jTextFieldSickLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 70, 100, 22));
 
+        jTextFieldVacationLeave.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldVacationLeave.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jTextFieldVacationLeave, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 100, 100, 22));
+
+        jTextFieldPaternity.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldPaternity.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jTextFieldPaternity, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 130, 100, 22));
+
+        jTextFieldMaternity.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldMaternity.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldMaternity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldMaternityActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextFieldMaternity, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 160, 100, -1));
+        jPanel1.add(jTextFieldMaternity, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 160, 100, 22));
 
         jLabel15.setText("days");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 73, -1, -1));
@@ -484,14 +495,16 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
 
         jLabel20.setText("Others");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 193, -1, -1));
-        jPanel1.add(jTextFieldOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 190, 100, -1));
+
+        jTextFieldOthers.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jTextFieldOthers.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jPanel1.add(jTextFieldOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 190, 100, 22));
 
         jLabel21.setText("days");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 193, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 280, 220));
 
-        jButtonReject.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonReject.setText("REJECT");
         jButtonReject.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonReject.addActionListener(new java.awt.event.ActionListener() {
@@ -501,7 +514,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 150, 23));
 
-        jButtonApprove.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonApprove.setText("APPROVE");
         jButtonApprove.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonApprove.addActionListener(new java.awt.event.ActionListener() {
@@ -552,7 +564,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         });
         getContentPane().add(jRadioButtonPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
-        jButtonSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonSave.setText("SAVE");
         jButtonSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -599,10 +610,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
     private void jTextFieldEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEndDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEndDateActionPerformed
-
-    private void jTextFieldEmployeeNum6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmployeeNum6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEmployeeNum6ActionPerformed
 
     private void jTextFieldLeaveDaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLeaveDaysActionPerformed
         // TODO add your handling code here:
@@ -722,7 +729,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -750,7 +756,6 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDateFiled;
     private javax.swing.JTextField jTextFieldEmployeeName;
     private javax.swing.JTextField jTextFieldEmployeeNum;
-    private javax.swing.JTextField jTextFieldEmployeeNum6;
     private javax.swing.JTextField jTextFieldEndDate;
     private javax.swing.JTextField jTextFieldLeaveDays;
     private javax.swing.JTextField jTextFieldLeaveReason;

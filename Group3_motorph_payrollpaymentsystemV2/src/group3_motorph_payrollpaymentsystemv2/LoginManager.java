@@ -182,12 +182,13 @@ public class LoginManager extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 223, 87), new java.awt.Color(254, 44, 57)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextFieldUsername.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsernameActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 160, -1));
+        jPanel2.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 160, 22));
 
         jLabel1.setBackground(new java.awt.Color(192, 168, 137));
         jLabel1.setText("Username");
@@ -196,7 +197,9 @@ public class LoginManager extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(192, 168, 137));
         jLabel2.setText("Password");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 53, -1, -1));
-        jPanel2.add(jPasswordFieldInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 160, -1));
+
+        jPasswordFieldInput.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
+        jPanel2.add(jPasswordFieldInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 160, 22));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
