@@ -373,9 +373,10 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        jButtonLeaveApp = new javax.swing.JButton();
         jButtonProfile = new javax.swing.JButton();
         jButtonPayroll = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
+        jButtonLeaveApp2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -426,15 +427,6 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(132, 220));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonLeaveApp.setText("Leave Application");
-        jButtonLeaveApp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonLeaveApp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLeaveAppActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButtonLeaveApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 120, 110, 25));
-
         jButtonProfile.setText("Profile");
         jButtonProfile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonProfile.addActionListener(new java.awt.event.ActionListener() {
@@ -452,6 +444,24 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButtonPayroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 80, 110, 25));
+
+        jButtonExit.setText("Exit");
+        jButtonExit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 110, 25));
+
+        jButtonLeaveApp2.setText("Leave Application");
+        jButtonLeaveApp2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonLeaveApp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLeaveApp2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonLeaveApp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 120, 110, 25));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 140, 220));
 
@@ -635,10 +645,6 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         openUserProfile();
     }//GEN-LAST:event_jButtonProfileActionPerformed
 
-    private void jButtonLeaveAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeaveAppActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLeaveAppActionPerformed
-
     private void jButtonSaveLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveLeaveActionPerformed
         // TODO add your handling code here:
         String id = jTextFieldEmployeeNum.getText();
@@ -793,6 +799,22 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTableLeaveApplicationsMouseClicked
 
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        // TODO add your handling code here:
+         try {
+            // TODO add your handling code here:
+            setVisible(false);
+            new LoginManager().setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void jButtonLeaveApp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeaveApp2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLeaveApp2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -835,7 +857,8 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
-    private javax.swing.JButton jButtonLeaveApp;
+    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonLeaveApp2;
     private javax.swing.JButton jButtonPayroll;
     private javax.swing.JButton jButtonProfile;
     private javax.swing.JButton jButtonSaveLeave;

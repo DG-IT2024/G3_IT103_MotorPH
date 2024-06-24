@@ -88,6 +88,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jButtonViewEmployee = new javax.swing.JButton();
         jButtonSave = new javax.swing.JButton();
         jButtonLeaveApplication = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,12 +162,28 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jTextFieldSSSnumActionPerformed(evt);
             }
         });
+        jTextFieldSSSnum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldSSSnumKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextFieldSSSnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, 205, -1));
+
+        jTextFieldPagibigNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPagibigNumKeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextFieldPagibigNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 110, 205, -1));
 
         jTextFieldTINnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTINnumActionPerformed(evt);
+            }
+        });
+        jTextFieldTINnum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTINnumKeyTyped(evt);
             }
         });
         jPanel1.add(jTextFieldTINnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 205, -1));
@@ -182,6 +199,11 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextFieldPhilhealthNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhilhealthNumActionPerformed(evt);
+            }
+        });
+        jTextFieldPhilhealthNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPhilhealthNumKeyTyped(evt);
             }
         });
         jPanel1.add(jTextFieldPhilhealthNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 205, -1));
@@ -412,7 +434,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonUpdateDBSActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonUpdateDBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, 25));
+        jPanel2.add(jButtonUpdateDBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 150, 25));
 
         jButtonViewEmployee.setText("VIEW EMPLOYEE");
         jButtonViewEmployee.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -421,7 +443,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonViewEmployeeActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonViewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 150, 25));
+        jPanel2.add(jButtonViewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 150, 25));
 
         jButtonSave.setText("SAVE");
         jButtonSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -439,7 +461,16 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 jButtonLeaveApplicationActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonLeaveApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 150, 25));
+        jPanel2.add(jButtonLeaveApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 25));
+
+        jButtonExit.setText("EXIT");
+        jButtonExit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 150, 25));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 200, 310));
 
@@ -515,6 +546,13 @@ public class EmployeeProfile extends javax.swing.JFrame {
     public static void allowOnlyDigits(KeyEvent evt) {
         char c = evt.getKeyChar();
         if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }
+
+    public static void allowOnlyDigitsSpecial(KeyEvent evt) {
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != '-') {
             evt.consume();
         }
     }
@@ -676,7 +714,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     public void textFieldEditSetting(boolean condition) {
 
-        jTextFieldEmployeeNum.setEditable(condition);
+        jTextFieldEmployeeNum.setEditable(false);
         jTextFieldLastName.setEditable(condition);
         jTextFieldFirstName.setEditable(condition);
         jDateChooserBirthday.setEnabled(condition);
@@ -752,12 +790,11 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     private void jButtonProfileDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileDeleteActionPerformed
 
-       
         int response = JOptionPane.showConfirmDialog(null, "Do you want to proceed with deleting the entry?",
                 "Delete Entry Confirmation",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-    
+
         if (response == JOptionPane.YES_OPTION) {
             int selectedRowIndex = jTableEmployeeList.getSelectedRow();
             DefaultTableModel model = (DefaultTableModel) jTableEmployeeList.getModel();
@@ -870,11 +907,11 @@ public class EmployeeProfile extends javax.swing.JFrame {
                 "Update Database Confirmation",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-    
+
         if (response == JOptionPane.YES_OPTION) {
- Filehandling.exportTableToCSV(jTableEmployeeList);
+            Filehandling.exportTableToCSV(jTableEmployeeList);
         }
-      
+
     }//GEN-LAST:event_jButtonUpdateDBSActionPerformed
 
 
@@ -883,11 +920,11 @@ public class EmployeeProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_jScrollPane2MouseClicked
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        
+
         if (!checkEntries()) {
             return;  // If any field is empty, stop the save action
         }
-        
+
         ArrayList<Integer> list = new ArrayList<>();
         int rowCount = jTableEmployeeList.getRowCount();
 
@@ -971,6 +1008,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     private void jTextFieldTINnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTINnumActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldTINnumActionPerformed
 
     private void jTextFieldSSSnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSSSnumActionPerformed
@@ -996,8 +1034,38 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     private void jDateChooserBirthdayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooserBirthdayKeyTyped
         // TODO add your handling code here:
-       allowOnlyDate(evt);
+        allowOnlyDate(evt);
     }//GEN-LAST:event_jDateChooserBirthdayKeyTyped
+
+    private void jTextFieldTINnumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTINnumKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigitsSpecial(evt);
+    }//GEN-LAST:event_jTextFieldTINnumKeyTyped
+
+    private void jTextFieldSSSnumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSSSnumKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigitsSpecial(evt);
+    }//GEN-LAST:event_jTextFieldSSSnumKeyTyped
+
+    private void jTextFieldPhilhealthNumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPhilhealthNumKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigitsSpecial(evt);
+    }//GEN-LAST:event_jTextFieldPhilhealthNumKeyTyped
+
+    private void jTextFieldPagibigNumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPagibigNumKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigitsSpecial(evt);
+    }//GEN-LAST:event_jTextFieldPagibigNumKeyTyped
+
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        try {
+            // TODO add your handling code here:
+            setVisible(false);
+            new LoginManager().setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1044,6 +1112,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonLeaveApplication;
     private javax.swing.JButton jButtonProfileAdd;
     private javax.swing.JButton jButtonProfileDelete;

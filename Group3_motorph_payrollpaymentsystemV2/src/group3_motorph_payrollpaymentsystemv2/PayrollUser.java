@@ -373,6 +373,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jButtonProfile1 = new javax.swing.JButton();
         jButtonLeaveApp = new javax.swing.JButton();
         jButtonPayroll1 = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel21.setText("Month");
@@ -633,6 +634,15 @@ public class PayrollUser extends javax.swing.JFrame {
         });
         jPanel3.add(jButtonPayroll1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, 25));
 
+        jButtonExit.setText("Exit");
+        jButtonExit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 130, 25));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 200, 150, 210));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -763,6 +773,18 @@ public class PayrollUser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonPayroll1ActionPerformed
 
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        // TODO add your handling code here:
+        
+         try {
+            // TODO add your handling code here:
+            setVisible(false);
+            new LoginManager().setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -804,6 +826,7 @@ public class PayrollUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonLeaveApp;
     private javax.swing.JButton jButtonPayroll1;
     private javax.swing.JButton jButtonProfile1;
