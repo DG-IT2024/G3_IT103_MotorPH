@@ -285,9 +285,10 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jComboBoxCoveredMonth = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jButtonAddtoRecords1 = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
         jButtonAddtoRecords2 = new javax.swing.JButton();
         jButtonCompute1 = new javax.swing.JButton();
+        jButtonPayrollSummary = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
 
         jLabel21.setText("Month");
@@ -547,15 +548,15 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jLabel23.setText("Year");
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 36, -1, -1));
 
-        jButtonAddtoRecords1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonAddtoRecords1.setText("Payroll Summary");
-        jButtonAddtoRecords1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        jButtonAddtoRecords1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonClose.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonClose.setText("CLOSE");
+        jButtonClose.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddtoRecords1ActionPerformed(evt);
+                jButtonCloseActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAddtoRecords1, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 320, 140, 23));
+        jPanel1.add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 70, 23));
 
         jButtonAddtoRecords2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonAddtoRecords2.setText("Add to Records");
@@ -565,7 +566,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
                 jButtonAddtoRecords2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAddtoRecords2, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 290, 140, 23));
+        jPanel1.add(jButtonAddtoRecords2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 140, 23));
 
         jButtonCompute1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCompute1.setText("Compute");
@@ -576,6 +577,16 @@ public class PayrollProcessing extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonCompute1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 83, 23));
+
+        jButtonPayrollSummary.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonPayrollSummary.setText("Payroll Summary");
+        jButtonPayrollSummary.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        jButtonPayrollSummary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPayrollSummaryActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonPayrollSummary, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 140, 23));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 620, 360));
 
@@ -686,9 +697,12 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBoxCoveredMonthMouseClicked
 
-    private void jButtonAddtoRecords1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddtoRecords1ActionPerformed
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddtoRecords1ActionPerformed
+        setVisible(false);
+
+
+    }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonAddtoRecords2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddtoRecords2ActionPerformed
         // TODO add your handling code here:
@@ -703,6 +717,23 @@ public class PayrollProcessing extends javax.swing.JFrame {
         processPayroll();
 
     }//GEN-LAST:event_jButtonCompute1ActionPerformed
+
+    private void jButtonPayrollSummaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPayrollSummaryActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            setVisible(false);
+            PayrollSummary payroll = new PayrollSummary();
+            // Display the window
+            payroll.setVisible(true);
+            payroll.pack();
+            payroll.setDefaultCloseOperation(PayrollProcessing.DISPOSE_ON_CLOSE); //if viewEmployeeFrame is close, main frame will not close.
+
+        } catch (IOException ex) {
+            Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonPayrollSummaryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -744,10 +775,11 @@ public class PayrollProcessing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAddtoRecords1;
     private javax.swing.JButton jButtonAddtoRecords2;
     private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonCompute1;
+    private javax.swing.JButton jButtonPayrollSummary;
     private javax.swing.JComboBox<String> jComboBoxCoveredMonth;
     private javax.swing.JComboBox<String> jComboBoxCoveredYear;
     private javax.swing.JLabel jLabel1;

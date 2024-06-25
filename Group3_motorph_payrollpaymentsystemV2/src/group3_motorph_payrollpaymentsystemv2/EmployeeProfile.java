@@ -2,6 +2,7 @@ package group3_motorph_payrollpaymentsystemv2;
 
 import group3_motorph_payrollpaymentsystemV2.Employee;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
+import java.awt.Color;
 
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -748,26 +750,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
     }
 
     public void textFieldEditSetting(boolean condition) {
-/*
-        jTextFieldEmployeeNum.setEditable(false);
-        jTextFieldLastName.setEditable(condition);
-        jTextFieldFirstName.setEditable(condition);
-        jDateChooserBirthday.setEnabled(condition);
-        jTextAreaAddress.setEditable(condition);
-        jTextFieldPhoneNum.setEditable(condition);
-        jTextFieldSSSnum.setEditable(condition);
-        jTextFieldPhilhealthNum.setEditable(condition);
-        jTextFieldTINnum.setEditable(condition);
-        jTextFieldPagibigNum.setEditable(condition);
-        jTextFieldStatus.setEditable(condition);
-        jTextFieldPosition.setEditable(condition);
-        jTextFieldSupervisor.setEditable(condition);
-        jTextFieldBasicSalary.setEditable(condition);
-        jTextFieldRiceSubsidy.setEditable(condition);
-        jTextFieldPhoneAllow.setEditable(condition);
-        jTextFieldClothAllow.setEditable(condition);
-*/
-         jTextFieldEmployeeNum.setEnabled(false);
+        jTextFieldEmployeeNum.setEnabled(false);
         jTextFieldLastName.setEnabled(condition);
         jTextFieldFirstName.setEnabled(condition);
         jDateChooserBirthday.setEnabled(condition);
@@ -784,9 +767,27 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jTextFieldRiceSubsidy.setEnabled(condition);
         jTextFieldPhoneAllow.setEnabled(condition);
         jTextFieldClothAllow.setEnabled(condition);
-        
-        
-        
+
+        JTextField dateEditor = (JTextField) jDateChooserBirthday.getDateEditor().getUiComponent();
+        dateEditor.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldEmployeeNum.setDisabledTextColor(Color.BLACK);
+        jTextFieldLastName.setDisabledTextColor(Color.BLACK);
+        jTextFieldFirstName.setDisabledTextColor(Color.BLACK);
+        jTextAreaAddress.setDisabledTextColor(Color.BLACK);
+        jTextFieldPhoneNum.setDisabledTextColor(Color.BLACK);
+        jTextFieldSSSnum.setDisabledTextColor(Color.BLACK);
+        jTextFieldPhilhealthNum.setDisabledTextColor(Color.BLACK);
+        jTextFieldTINnum.setDisabledTextColor(Color.BLACK);
+        jTextFieldPagibigNum.setDisabledTextColor(Color.BLACK);
+        jTextFieldStatus.setDisabledTextColor(Color.BLACK);
+        jTextFieldPosition.setDisabledTextColor(Color.BLACK);
+        jTextFieldSupervisor.setDisabledTextColor(Color.BLACK);
+        jTextFieldBasicSalary.setDisabledTextColor(Color.BLACK);
+        jTextFieldRiceSubsidy.setDisabledTextColor(Color.BLACK);
+        jTextFieldPhoneAllow.setDisabledTextColor(Color.BLACK);
+        jTextFieldClothAllow.setDisabledTextColor(Color.BLACK);
+
     }
 
     private boolean checkEntries() {
