@@ -543,11 +543,11 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jDateChooserStartDate.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         jDateChooserStartDate.setDateFormatString("yyyy-MM-dd");
         jDateChooserStartDate.setMinSelectableDate(new java.util.Date(-62135794702000L));
-        jPanel3.add(jDateChooserStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 107, 190, 30));
+        jPanel3.add(jDateChooserStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 190, 30));
 
         jDateChooserEndDate.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         jDateChooserEndDate.setDateFormatString("yyyy-MM-dd");
-        jPanel3.add(jDateChooserEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 190, 30));
+        jPanel3.add(jDateChooserEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 190, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 55, 720, 220));
 
