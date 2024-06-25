@@ -91,13 +91,12 @@ public class PayrollProcessing extends javax.swing.JFrame {
         }
 
     }
-    
-    public boolean isEntryUnique(){
-        boolean condition = true; 
-   
+
+    public boolean isEntryUnique() {
+        boolean condition = true;
+
         return condition;
     }
-            
 
     public Integer matchWorkedHours() {
         String searchId = jTextFieldEmployeeNum.getText();
@@ -712,11 +711,23 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
     private void jButtonAddtoRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddtoRecordsActionPerformed
         // TODO add your handling code here:
-          try {
-            // TODO add your handling code here:
-            updatePayrollRecords();
-        } catch (IOException ex) {
-            Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
+    
+
+            int response = JOptionPane.showConfirmDialog(null, "Do you want to add this to the payroll records?",
+                    "Update Confirmation",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
+
+            if (response == JOptionPane.YES_OPTION) {
+                try {
+                    updatePayrollRecords();
+                } catch (IOException ex) {
+                    Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+            } else {
+                
+          
         }
     }//GEN-LAST:event_jButtonAddtoRecordsActionPerformed
 
@@ -726,10 +737,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
         String workedHours = employeeData.get(searchIndex).getNoOfHoursWorked();
         jTextFieldWorkedHours.setText(workedHours);
 
-        
-        
-        
-        
         processPayroll();
 
     }//GEN-LAST:event_jButtonCompute1ActionPerformed
