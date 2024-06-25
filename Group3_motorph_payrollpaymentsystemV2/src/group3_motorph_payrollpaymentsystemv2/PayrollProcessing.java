@@ -91,6 +91,13 @@ public class PayrollProcessing extends javax.swing.JFrame {
         }
 
     }
+    
+    public boolean isEntryUnique(){
+        boolean condition = true; 
+   
+        return condition;
+    }
+            
 
     public Integer matchWorkedHours() {
         String searchId = jTextFieldEmployeeNum.getText();
@@ -100,7 +107,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
             EmployeeHoursWorked employeehoursWorked = employeeData.get(i);
             if (employeehoursWorked.getEmployeeNumber().equals(searchId) && employeehoursWorked.getCoveredPeriod().equals(searchPeriod)) {
                 return i;
-
             }
         }
         JOptionPane.showMessageDialog(null, "No record for the selected covered period");
@@ -286,7 +292,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jButtonClose = new javax.swing.JButton();
-        jButtonAddtoRecords2 = new javax.swing.JButton();
+        jButtonAddtoRecords = new javax.swing.JButton();
         jButtonCompute1 = new javax.swing.JButton();
         jButtonPayrollSummary = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
@@ -558,15 +564,15 @@ public class PayrollProcessing extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 70, 23));
 
-        jButtonAddtoRecords2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonAddtoRecords2.setText("Add to Records");
-        jButtonAddtoRecords2.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        jButtonAddtoRecords2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAddtoRecords.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonAddtoRecords.setText("Add to Records");
+        jButtonAddtoRecords.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        jButtonAddtoRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddtoRecords2ActionPerformed(evt);
+                jButtonAddtoRecordsActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonAddtoRecords2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 140, 23));
+        jPanel1.add(jButtonAddtoRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 140, 23));
 
         jButtonCompute1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCompute1.setText("Compute");
@@ -704,9 +710,15 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
-    private void jButtonAddtoRecords2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddtoRecords2ActionPerformed
+    private void jButtonAddtoRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddtoRecordsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAddtoRecords2ActionPerformed
+          try {
+            // TODO add your handling code here:
+            updatePayrollRecords();
+        } catch (IOException ex) {
+            Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonAddtoRecordsActionPerformed
 
     private void jButtonCompute1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompute1ActionPerformed
         // TODO add your handling code here:
@@ -714,6 +726,10 @@ public class PayrollProcessing extends javax.swing.JFrame {
         String workedHours = employeeData.get(searchIndex).getNoOfHoursWorked();
         jTextFieldWorkedHours.setText(workedHours);
 
+        
+        
+        
+        
         processPayroll();
 
     }//GEN-LAST:event_jButtonCompute1ActionPerformed
@@ -775,7 +791,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAddtoRecords2;
+    private javax.swing.JButton jButtonAddtoRecords;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonCompute1;

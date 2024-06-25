@@ -2,6 +2,7 @@ package group3_motorph_payrollpaymentsystemv2;
 
 import group3_motorph_payrollpaymentsystemV2.Employee;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
+import java.awt.Color;
 import java.awt.Toolkit;
 
 import java.io.FileNotFoundException;
@@ -24,7 +25,7 @@ public class EmployeeProfileUser extends javax.swing.JFrame {
         csvRun(csvFile);
         showDetails();
         setIconImage();
-
+setFieldsEnabled(false);
     }
 
     public String getEmployeeNumber() {
@@ -103,7 +104,59 @@ public class EmployeeProfileUser extends javax.swing.JFrame {
         return userInformation;
 
     }
+    
+       public void setFieldsEnabled(boolean condition) {
+        jTextAreaAddress.setEnabled(condition);
+        jTextAreaAddress.setDisabledTextColor(Color.BLACK);
 
+        jTextFieldBasicSalary.setEnabled(condition);
+        jTextFieldBasicSalary.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldBirthday.setEnabled(condition);
+        jTextFieldBirthday.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldClothAllow.setEnabled(condition);
+        jTextFieldClothAllow.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldEmployeeNum.setEnabled(condition);
+        jTextFieldEmployeeNum.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldFirstName.setEnabled(condition);
+        jTextFieldFirstName.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldLastName.setEnabled(condition);
+        jTextFieldLastName.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldPagibigNum.setEnabled(condition);
+        jTextFieldPagibigNum.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldPhilhealthNum.setEnabled(condition);
+        jTextFieldPhilhealthNum.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldPhoneAllow.setEnabled(condition);
+        jTextFieldPhoneAllow.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldPhoneNum.setEnabled(condition);
+        jTextFieldPhoneNum.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldPosition.setEnabled(condition);
+        jTextFieldPosition.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldRiceSubsidy.setEnabled(condition);
+        jTextFieldRiceSubsidy.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldSSSnum.setEnabled(condition);
+        jTextFieldSSSnum.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldStatus.setEnabled(condition);
+        jTextFieldStatus.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldSupervisor.setEnabled(condition);
+        jTextFieldSupervisor.setDisabledTextColor(Color.BLACK);
+
+        jTextFieldTINnum.setEnabled(condition);
+        jTextFieldTINnum.setDisabledTextColor(Color.BLACK);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
