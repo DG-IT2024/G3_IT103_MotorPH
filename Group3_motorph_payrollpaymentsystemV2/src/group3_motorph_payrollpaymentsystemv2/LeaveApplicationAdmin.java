@@ -513,7 +513,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jButtonRejectActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 150, 23));
+        getContentPane().add(jButtonReject, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 218, 150, 23));
 
         jButtonApprove.setText("APPROVE");
         jButtonApprove.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -563,7 +563,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jRadioButtonPendingActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        getContentPane().add(jRadioButtonPending, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         jButtonSave.setText("SAVE");
         jButtonSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -572,15 +572,16 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
                 jButtonSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 150, 23));
+        getContentPane().add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 246, 150, 23));
 
         jButtonClose.setText("CLOSE");
+        jButtonClose.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCloseActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 150, -1));
+        getContentPane().add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 274, 150, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
