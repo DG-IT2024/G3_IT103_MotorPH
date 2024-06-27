@@ -265,7 +265,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
                 workingDays++;
             }
         }
-
+                       
         return workingDays;
     }
 
@@ -751,8 +751,8 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldWorkedHours.setText("");
         jTextSssDeduction.setText("");
 
-        jComboBoxCoveredMonth.setSelectedIndex(-1); // Assuming you want to deselect any selection
-        jComboBoxCoveredYear.setSelectedIndex(-1); // Assuming you want to deselect any selection
+        jComboBoxCoveredMonth.setSelectedIndex(0); // Assuming you want to deselect any selection
+        jComboBoxCoveredYear.setSelectedIndex(0); // Assuming you want to deselect any selection
 
 
     }//GEN-LAST:event_jButtonClearActionPerformed
