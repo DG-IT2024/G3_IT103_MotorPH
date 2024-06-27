@@ -19,6 +19,11 @@ import com.opencsv.CSVWriter;
 import java.io.FileWriter;
 import group3_motorph_payrollpaymentsystemV2.Filehandling;
 import java.awt.Toolkit;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.MonthDay;
+import java.time.YearMonth;
 
 /**
  *
@@ -186,11 +191,16 @@ public class PayrollProcessing extends javax.swing.JFrame {
         }
 
     }
-
+    
     public void processPayroll() {
+        
+        String monthString= jComboBoxCoveredMonth.getSelectedItem().toString();
+        Month monthEnum = Month.valueOf(monthString.toUpperCase());
+        int month = monthEnum.getValue();
+        int year = Integer.parseInt(jComboBoxCoveredYear.getSelectedItem().toString());
 
         double basisSalary = Double.parseDouble(jTextFieldBasicSalary.getText());
-        double totalDaysMonth = 21; // used to be consistent with the hourlyrate in the MotorPH website.         
+        double totalDaysMonth = getWorkingDays(month, year); //          
         double maxDayHours = 8;//maximum of working hours per day
 
         double hourlyRate = basisSalary / totalDaysMonth / maxDayHours;
@@ -238,6 +248,93 @@ public class PayrollProcessing extends javax.swing.JFrame {
         takeHomePay = grossIncome - totalDeduction + totalBenefits;
         String formattedTakeHomePay = String.format("%.2f", takeHomePay);
         jTextFieldTakeHomePay.setText(formattedTakeHomePay);
+    }
+
+    public int getWorkingDays(int month, int year) {
+
+        YearMonth yearMonth = YearMonth.of(year, month);
+        int totalDays = yearMonth.lengthOfMonth(); //determines the total days in a particular month, in a given year
+        int workingDays = 0;
+
+        List<MonthDay> holidays = getPhilippineHolidays(year); //List all declared holiday
+
+        //determine the number of working days
+        for (int day = 1; day <= totalDays; day++) {
+            LocalDate date = LocalDate.of(year, month, day);
+            if (isWorkingDay(date, holidays)) { // adds one day if true
+                workingDays++;
+            }
+        }
+
+        return workingDays;
+    }
+
+    private static boolean isWorkingDay(LocalDate date, List<MonthDay> holidays) {
+        DayOfWeek dayOfWeek = date.getDayOfWeek(); //Retrieves the day of the week for the given date (e.i. Monday-Sunday)
+        MonthDay monthDay = MonthDay.of(date.getMonthValue(), date.getDayOfMonth());   // Creates a MonthDay instance for the given date, ignoring the year
+        return dayOfWeek != DayOfWeek.SUNDAY && !holidays.contains(monthDay);
+    }
+
+    public static List<MonthDay> getPhilippineHolidays(int year) {
+        List<MonthDay> holidays = new ArrayList<>();
+
+        // Regular holidays
+        holidays.add(MonthDay.of(1, 1));   // New Year's Day
+        holidays.add(MonthDay.of(4, 9));   // Araw ng Kagitingan
+        holidays.add(MonthDay.of(5, 1));   // Labor Day
+        holidays.add(MonthDay.of(6, 12));  // Independence Day
+        holidays.add(MonthDay.of(11, 30)); // Bonifacio Day
+        holidays.add(MonthDay.of(12, 25)); // Christmas Day
+        holidays.add(MonthDay.of(12, 30)); // Rizal Day
+
+        // Special holidays
+        holidays.add(MonthDay.of(2, 25));  // EDSA People Power Revolution Anniversary
+        holidays.add(MonthDay.of(8, 21));  // Ninoy Aquino Day
+        holidays.add(MonthDay.of(11, 1));  // All Saints' Day
+        holidays.add(MonthDay.of(11, 2));  // All Souls' Day
+        holidays.add(MonthDay.of(12, 8));  // Feast of the Immaculate Conception
+        holidays.add(MonthDay.of(12, 24)); // Christmas Eve
+        holidays.add(MonthDay.of(12, 31)); // New Year's Eve
+
+        // Moveable holidays (examples for given years, adjust manually)
+        if (year == 2020) {
+            holidays.add(MonthDay.of(4, 9));  // Maundy Thursday 2020
+            holidays.add(MonthDay.of(4, 10)); // Good Friday 2020
+            holidays.add(MonthDay.of(4, 11)); // Black Saturday 2020
+            holidays.add(MonthDay.of(1, 25)); // Chinese New Year 2020
+            holidays.add(MonthDay.of(5, 24)); // Eid'l Fitr 2020 (adjust manually)
+            holidays.add(MonthDay.of(7, 31)); // Eid'l Adha 2020 (adjust manually)
+        } else if (year == 2021) {
+            holidays.add(MonthDay.of(4, 1));  // Maundy Thursday 2021
+            holidays.add(MonthDay.of(4, 2));  // Good Friday 2021
+            holidays.add(MonthDay.of(4, 3));  // Black Saturday 2021
+            holidays.add(MonthDay.of(2, 12)); // Chinese New Year 2021
+            holidays.add(MonthDay.of(5, 13)); // Eid'l Fitr 2021 (adjust manually)
+            holidays.add(MonthDay.of(7, 20)); // Eid'l Adha 2021 (adjust manually)
+        } else if (year == 2022) {
+            holidays.add(MonthDay.of(4, 14)); // Maundy Thursday 2022
+            holidays.add(MonthDay.of(4, 15)); // Good Friday 2022
+            holidays.add(MonthDay.of(4, 16)); // Black Saturday 2022
+            holidays.add(MonthDay.of(2, 1));  // Chinese New Year 2022
+            holidays.add(MonthDay.of(5, 3));  // Eid'l Fitr 2022 (adjust manually)
+            holidays.add(MonthDay.of(7, 10)); // Eid'l Adha 2022 (adjust manually)
+        } else if (year == 2023) {
+            holidays.add(MonthDay.of(4, 6));  // Maundy Thursday 2023
+            holidays.add(MonthDay.of(4, 7));  // Good Friday 2023
+            holidays.add(MonthDay.of(4, 8));  // Black Saturday 2023
+            holidays.add(MonthDay.of(1, 22)); // Chinese New Year 2023
+            holidays.add(MonthDay.of(4, 21)); // Eid'l Fitr 2023 (adjust manually)
+            holidays.add(MonthDay.of(6, 28)); // Eid'l Adha 2023 (adjust manually)
+        } else if (year == 2024) {
+            holidays.add(MonthDay.of(3, 28)); // Maundy Thursday 2024
+            holidays.add(MonthDay.of(3, 29)); // Good Friday 2024
+            holidays.add(MonthDay.of(3, 30)); // Black Saturday 2024
+            holidays.add(MonthDay.of(2, 10)); // Chinese New Year 2024
+            holidays.add(MonthDay.of(4, 10)); // Eid'l Fitr 2024 (adjust manually)
+            holidays.add(MonthDay.of(6, 17)); // Eid'l Adha 2024 (adjust manually)
+        }
+
+        return holidays;
     }
 
     /**
@@ -313,6 +410,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldEmployeeNum.setEditable(false);
         jTextFieldEmployeeNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldEmployeeNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldEmployeeNum.setEnabled(false);
         jTextFieldEmployeeNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmployeeNumActionPerformed(evt);
@@ -331,6 +429,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldLastName.setEditable(false);
         jTextFieldLastName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldLastName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldLastName.setEnabled(false);
         jTextFieldLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLastNameActionPerformed(evt);
@@ -344,6 +443,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldFirstName.setEditable(false);
         jTextFieldFirstName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldFirstName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldFirstName.setEnabled(false);
         jTextFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFirstNameActionPerformed(evt);
@@ -370,6 +470,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldWorkedHours.setEditable(false);
         jTextFieldWorkedHours.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldWorkedHours.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldWorkedHours.setEnabled(false);
         jTextFieldWorkedHours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldWorkedHoursActionPerformed(evt);
@@ -393,6 +494,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldGrossIncome.setEditable(false);
         jTextFieldGrossIncome.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldGrossIncome.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldGrossIncome.setEnabled(false);
         jTextFieldGrossIncome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldGrossIncomeActionPerformed(evt);
@@ -406,6 +508,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextSssDeduction.setEditable(false);
         jTextSssDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextSssDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextSssDeduction.setEnabled(false);
         jTextSssDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextSssDeductionActionPerformed(evt);
@@ -416,6 +519,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldPhilHealthDeduction.setEditable(false);
         jTextFieldPhilHealthDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldPhilHealthDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldPhilHealthDeduction.setEnabled(false);
         jTextFieldPhilHealthDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhilHealthDeductionActionPerformed(evt);
@@ -432,6 +536,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldPagibigDeduction.setEditable(false);
         jTextFieldPagibigDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldPagibigDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldPagibigDeduction.setEnabled(false);
         jTextFieldPagibigDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPagibigDeductionActionPerformed(evt);
@@ -445,6 +550,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldWHT.setEditable(false);
         jTextFieldWHT.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldWHT.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldWHT.setEnabled(false);
         jTextFieldWHT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldWHTActionPerformed(evt);
@@ -462,6 +568,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldGrossIncome_S.setEditable(false);
         jTextFieldGrossIncome_S.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldGrossIncome_S.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldGrossIncome_S.setEnabled(false);
         jTextFieldGrossIncome_S.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldGrossIncome_SActionPerformed(evt);
@@ -475,6 +582,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldBenefits.setEditable(false);
         jTextFieldBenefits.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldBenefits.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldBenefits.setEnabled(false);
         jTextFieldBenefits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBenefitsActionPerformed(evt);
@@ -485,6 +593,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldTotalDeductions.setEditable(false);
         jTextFieldTotalDeductions.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldTotalDeductions.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldTotalDeductions.setEnabled(false);
         jTextFieldTotalDeductions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTotalDeductionsActionPerformed(evt);
@@ -498,6 +607,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldTakeHomePay.setEditable(false);
         jTextFieldTakeHomePay.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldTakeHomePay.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldTakeHomePay.setEnabled(false);
         jTextFieldTakeHomePay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTakeHomePayActionPerformed(evt);
@@ -511,6 +621,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldHourlyRate.setEditable(false);
         jTextFieldHourlyRate.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldHourlyRate.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldHourlyRate.setEnabled(false);
         jTextFieldHourlyRate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldHourlyRateActionPerformed(evt);
@@ -527,6 +638,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldBasicSalary.setEditable(false);
         jTextFieldBasicSalary.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldBasicSalary.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldBasicSalary.setEnabled(false);
         jTextFieldBasicSalary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBasicSalaryActionPerformed(evt);
@@ -593,7 +705,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonPayrollSummary, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 140, 23));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 620, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 620, 350));
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group3_motorph_payrollpaymentsystemv2/PayrollD.jpg"))); // NOI18N
         getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -711,23 +823,21 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
     private void jButtonAddtoRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddtoRecordsActionPerformed
         // TODO add your handling code here:
-    
 
-            int response = JOptionPane.showConfirmDialog(null, "Do you want to add this to the payroll records?",
-                    "Update Confirmation",
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE);
+        int response = JOptionPane.showConfirmDialog(null, "Do you want to add this to the payroll records?",
+                "Update Confirmation",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
 
-            if (response == JOptionPane.YES_OPTION) {
-                try {
-                    updatePayrollRecords();
-                } catch (IOException ex) {
-                    Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
-                }
-               
-            } else {
-                
-          
+        if (response == JOptionPane.YES_OPTION) {
+            try {
+                updatePayrollRecords();
+            } catch (IOException ex) {
+                Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+
         }
     }//GEN-LAST:event_jButtonAddtoRecordsActionPerformed
 
