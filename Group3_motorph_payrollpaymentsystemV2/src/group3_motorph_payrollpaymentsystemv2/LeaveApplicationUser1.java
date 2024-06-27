@@ -237,9 +237,10 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
             startDate.setTime(DATE_FORMAT.parse(startDateStr));
             Calendar endDate = Calendar.getInstance();
             endDate.setTime(DATE_FORMAT.parse(endDateStr));
-            
-             if (endDate.before(startDate)) {
-                return -1; 
+
+            // Check if end date is before start date
+            if (endDate.before(startDate)) {
+                return -1;
             }
 
             int year = startDate.get(Calendar.YEAR);
@@ -249,8 +250,17 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
             while (!startDate.after(endDate)) {
                 int dayOfWeek = startDate.get(Calendar.DAY_OF_WEEK);
-                MonthDay currentMonthDay = MonthDay.from(startDate.toInstant().atZone(startDate.getTimeZone().toZoneId()).toLocalDate());
-
+                
+                 // Convert Calendar to LocalDate
+                LocalDate localDate = LocalDate.of(
+                        startDate.get(Calendar.YEAR),
+                        startDate.get(Calendar.MONTH) + 1,
+                        startDate.get(Calendar.DAY_OF_MONTH)
+                );
+                
+                // Convert LocalDate to MonthDay
+                MonthDay currentMonthDay = MonthDay.from(localDate);
+                
                 // Exclude Sundays and holidays
                 if (dayOfWeek != Calendar.SUNDAY && !holidays.contains(currentMonthDay)) {
                     leaveDays++;
