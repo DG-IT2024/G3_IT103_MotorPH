@@ -191,10 +191,27 @@ public class PayrollProcessing extends javax.swing.JFrame {
         }
 
     }
-    
-    public void processPayroll() {
+
+    public void clearFields() {
+        jTextFieldBenefits.setText("");
+        jTextFieldGrossIncome.setText("");
+        jTextFieldGrossIncome_S.setText("");
+        jTextFieldHourlyRate.setText("");
+        jTextFieldPagibigDeduction.setText("");
+        jTextFieldPhilHealthDeduction.setText("");
+        jTextFieldTakeHomePay.setText("");
+        jTextFieldTotalDeductions.setText("");
+        jTextFieldWHT.setText("");
+        jTextFieldWorkedHours.setText("");
+        jTextSssDeduction.setText("");
+
         
-        String monthString= jComboBoxCoveredMonth.getSelectedItem().toString();
+
+    }
+
+    public void processPayroll() {
+
+        String monthString = jComboBoxCoveredMonth.getSelectedItem().toString();
         Month monthEnum = Month.valueOf(monthString.toUpperCase());
         int month = monthEnum.getValue();
         int year = Integer.parseInt(jComboBoxCoveredYear.getSelectedItem().toString());
@@ -265,7 +282,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
                 workingDays++;
             }
         }
-                       
+
         return workingDays;
     }
 
@@ -360,7 +377,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jComboBoxCoveredYear = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldWorkedHours = new javax.swing.JTextField();
-        jButtonClear = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldGrossIncome = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -477,16 +493,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextFieldWorkedHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 170, 22));
-
-        jButtonClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonClear.setText("Clear");
-        jButtonClear.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClearActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 90, 83, 23));
 
         jLabel8.setText("Gross Income");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 193, -1, -1));
@@ -693,7 +699,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
                 jButtonCompute1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCompute1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 83, 23));
+        jPanel1.add(jButtonCompute1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 83, 23));
 
         jButtonPayrollSummary.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonPayrollSummary.setText("Payroll Summary");
@@ -736,26 +742,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jTextFieldWorkedHoursActionPerformed
-
-    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-        // TODO add your handling code here:
-        jTextFieldBenefits.setText("");
-        jTextFieldGrossIncome.setText("");
-        jTextFieldGrossIncome_S.setText("");
-        jTextFieldHourlyRate.setText("");
-        jTextFieldPagibigDeduction.setText("");
-        jTextFieldPhilHealthDeduction.setText("");
-        jTextFieldTakeHomePay.setText("");
-        jTextFieldTotalDeductions.setText("");
-        jTextFieldWHT.setText("");
-        jTextFieldWorkedHours.setText("");
-        jTextSssDeduction.setText("");
-
-        jComboBoxCoveredMonth.setSelectedIndex(0); // Assuming you want to deselect any selection
-        jComboBoxCoveredYear.setSelectedIndex(0); // Assuming you want to deselect any selection
-
-
-    }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jTextFieldGrossIncomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGrossIncomeActionPerformed
         // TODO add your handling code here:
@@ -909,7 +895,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddtoRecords;
-    private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonClose;
     private javax.swing.JButton jButtonCompute1;
     private javax.swing.JButton jButtonPayrollSummary;
