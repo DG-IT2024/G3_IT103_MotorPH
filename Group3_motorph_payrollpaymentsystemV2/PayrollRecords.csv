@@ -1,1 +1,3 @@
-"Employee No.","Last Name","First Name","Worked Hours","Basic Salary","Hourly Rate","Gross Income","SSS Deduction ","Philhealth Deduction ","Pagibig Deduction","Withholding Tax","Covered Month","Covered Year","Benefits","Total Deductions","Take-Home pay"
+"Employee No.","Last Name","First Name","Worked Hours","Basic Salary","Hourly Rate","Gross Income","SSS Deduction ","Philhealth Deduction ","Pagibig Deduction","Withholding Tax","Covered Month","Covered Year","Benefits","Total Deductions","Take-Home pay""1","Garcia","Manuel III","169","90000","450.00","76050.00","1125.00","900.00","100.00","13010.40","January","2020","4500.00","15135.40","65414.60"
+"1","Garcia","Manuel III","169","90000","450.00","76050.00","1125.00","900.00","100.00","13010.40","January","2020","4500.00","15135.40","65414.60"
+"1","Garcia","Manuel III","168","90000","468.75","78750.00","1125.00","900.00","100.00","13820.40","February","2020","4500.00","15945.40","67304.60"

@@ -97,12 +97,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
     }
 
-    public boolean isEntryUnique() {
-        boolean condition = true;
-
-        return condition;
-    }
-
     public Integer matchWorkedHours() {
         String searchId = jTextFieldEmployeeNum.getText();
         String searchPeriod = jComboBoxCoveredMonth.getSelectedItem().toString() + " " + jComboBoxCoveredYear.getSelectedItem().toString();
@@ -205,8 +199,30 @@ public class PayrollProcessing extends javax.swing.JFrame {
         jTextFieldWorkedHours.setText("");
         jTextSssDeduction.setText("");
 
-        
+    }
 
+    public boolean isUniqueCompute() {
+        try {
+            String Id = jTextFieldEmployeeNum.getText();
+            String month = jComboBoxCoveredMonth.getSelectedItem().toString();
+            String year = jComboBoxCoveredYear.getSelectedItem().toString();
+
+            String recordsName = "PayrollRecords.csv";
+            List<String[]> records = Filehandling.readCSV(recordsName);
+
+            for (String[] record : records) {
+                if (record[0].equals(Id) && record[11].equals(month) && record[12].equals(year)) {
+                    JOptionPane.showMessageDialog(null, "This entry already exists in the payroll records.");
+                    return false; // Record with same Id, month, and year exists
+                }
+            }
+
+            return true; // No matching record found
+        } catch (IOException ex) {
+            Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false; // In case of exception
     }
 
     public void processPayroll() {
@@ -808,22 +824,21 @@ public class PayrollProcessing extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonAddtoRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddtoRecordsActionPerformed
-        // TODO add your handling code here:
+        if (isUniqueCompute()) {
+            int response = JOptionPane.showConfirmDialog(null, "Do you want to add this to the payroll records?",
+                    "Update Confirmation",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
 
-        int response = JOptionPane.showConfirmDialog(null, "Do you want to add this to the payroll records?",
-                "Update Confirmation",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
+            if (response == JOptionPane.YES_OPTION) {
+                try {
+                    updatePayrollRecords();
+                } catch (IOException ex) {
+                    Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
 
-        if (response == JOptionPane.YES_OPTION) {
-            try {
-                updatePayrollRecords();
-            } catch (IOException ex) {
-                Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-        } else {
-
         }
     }//GEN-LAST:event_jButtonAddtoRecordsActionPerformed
 
