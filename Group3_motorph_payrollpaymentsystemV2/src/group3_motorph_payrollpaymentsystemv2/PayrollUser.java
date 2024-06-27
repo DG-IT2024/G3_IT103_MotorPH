@@ -398,6 +398,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldPagibigDeduction.setEditable(false);
         jTextFieldPagibigDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldPagibigDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldPagibigDeduction.setEnabled(false);
         jTextFieldPagibigDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPagibigDeductionActionPerformed(evt);
@@ -414,6 +415,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldWHTax.setEditable(false);
         jTextFieldWHTax.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldWHTax.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldWHTax.setEnabled(false);
         jTextFieldWHTax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldWHTaxActionPerformed(evt);
@@ -424,6 +426,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldEmployeeNum.setEditable(false);
         jTextFieldEmployeeNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldEmployeeNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldEmployeeNum.setEnabled(false);
         jTextFieldEmployeeNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmployeeNumActionPerformed(evt);
@@ -449,6 +452,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldLastName.setEditable(false);
         jTextFieldLastName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldLastName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldLastName.setEnabled(false);
         jTextFieldLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldLastNameActionPerformed(evt);
@@ -459,6 +463,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldGrossIncome_S.setEditable(false);
         jTextFieldGrossIncome_S.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldGrossIncome_S.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldGrossIncome_S.setEnabled(false);
         jTextFieldGrossIncome_S.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldGrossIncome_SActionPerformed(evt);
@@ -475,6 +480,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldFirstName.setEditable(false);
         jTextFieldFirstName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldFirstName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldFirstName.setEnabled(false);
         jTextFieldFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldFirstNameActionPerformed(evt);
@@ -485,6 +491,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldBenefits.setEditable(false);
         jTextFieldBenefits.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldBenefits.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldBenefits.setEnabled(false);
         jTextFieldBenefits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBenefitsActionPerformed(evt);
@@ -513,6 +520,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldWorkedHours.setEditable(false);
         jTextFieldWorkedHours.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldWorkedHours.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldWorkedHours.setEnabled(false);
         jTextFieldWorkedHours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldWorkedHoursActionPerformed(evt);
@@ -535,6 +543,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldGrossIncome.setEditable(false);
         jTextFieldGrossIncome.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldGrossIncome.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldGrossIncome.setEnabled(false);
         jTextFieldGrossIncome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldGrossIncomeActionPerformed(evt);
@@ -548,6 +557,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextSssDeduction.setEditable(false);
         jTextSssDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextSssDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextSssDeduction.setEnabled(false);
         jTextSssDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextSssDeductionActionPerformed(evt);
@@ -558,6 +568,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldPhilHealthDeduction.setEditable(false);
         jTextFieldPhilHealthDeduction.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldPhilHealthDeduction.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldPhilHealthDeduction.setEnabled(false);
         jTextFieldPhilHealthDeduction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhilHealthDeductionActionPerformed(evt);
@@ -568,6 +579,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldTotalDeductions.setEditable(false);
         jTextFieldTotalDeductions.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldTotalDeductions.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldTotalDeductions.setEnabled(false);
         jTextFieldTotalDeductions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTotalDeductionsActionPerformed(evt);
@@ -581,6 +593,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldTakeHomePay.setEditable(false);
         jTextFieldTakeHomePay.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldTakeHomePay.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldTakeHomePay.setEnabled(false);
         jTextFieldTakeHomePay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTakeHomePayActionPerformed(evt);
@@ -588,12 +601,14 @@ public class PayrollUser extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldTakeHomePay, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 370, 112, 22));
 
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel17.setText("TAKE-HOME PAY");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 373, -1, -1));
 
         jTextFieldHourlyRate.setEditable(false);
         jTextFieldHourlyRate.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldHourlyRate.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldHourlyRate.setEnabled(false);
         jTextFieldHourlyRate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldHourlyRateActionPerformed(evt);
@@ -610,6 +625,7 @@ public class PayrollUser extends javax.swing.JFrame {
         jTextFieldBasicSalary.setEditable(false);
         jTextFieldBasicSalary.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldBasicSalary.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldBasicSalary.setEnabled(false);
         jTextFieldBasicSalary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBasicSalaryActionPerformed(evt);

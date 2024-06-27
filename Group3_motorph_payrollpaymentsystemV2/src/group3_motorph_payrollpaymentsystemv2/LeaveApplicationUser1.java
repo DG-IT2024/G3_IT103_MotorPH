@@ -486,6 +486,7 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jTextFieldEmployeeNum.setEditable(false);
         jTextFieldEmployeeNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldEmployeeNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldEmployeeNum.setEnabled(false);
         jTextFieldEmployeeNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmployeeNumActionPerformed(evt);
@@ -496,6 +497,7 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         jTextFieldEmployeeName.setEditable(false);
         jTextFieldEmployeeName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldEmployeeName.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextFieldEmployeeName.setEnabled(false);
         jTextFieldEmployeeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmployeeNameActionPerformed(evt);
