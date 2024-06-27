@@ -27,7 +27,10 @@ import javax.swing.table.DefaultTableModel;
 import java.time.LocalDateTime;
 import java.time.MonthDay;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
@@ -166,11 +169,98 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
     }
 
+    public static List<MonthDay> getPhilippineHolidays(int year) {
+        List<MonthDay> holidays = new ArrayList<>();
+
+        // Regular holidays
+        holidays.add(MonthDay.of(1, 1));   // New Year's Day
+        holidays.add(MonthDay.of(4, 9));   // Araw ng Kagitingan
+        holidays.add(MonthDay.of(5, 1));   // Labor Day
+        holidays.add(MonthDay.of(6, 12));  // Independence Day
+        holidays.add(MonthDay.of(11, 30)); // Bonifacio Day
+        holidays.add(MonthDay.of(12, 25)); // Christmas Day
+        holidays.add(MonthDay.of(12, 30)); // Rizal Day
+
+        // Special holidays
+        holidays.add(MonthDay.of(2, 25));  // EDSA People Power Revolution Anniversary
+        holidays.add(MonthDay.of(8, 21));  // Ninoy Aquino Day
+        holidays.add(MonthDay.of(11, 1));  // All Saints' Day
+        holidays.add(MonthDay.of(11, 2));  // All Souls' Day
+        holidays.add(MonthDay.of(12, 8));  // Feast of the Immaculate Conception
+        holidays.add(MonthDay.of(12, 24)); // Christmas Eve
+        holidays.add(MonthDay.of(12, 31)); // New Year's Eve
+
+        // Moveable holidays (examples for given years, adjust manually)
+        if (year == 2020) {
+            holidays.add(MonthDay.of(4, 9));  // Maundy Thursday 2020
+            holidays.add(MonthDay.of(4, 10)); // Good Friday 2020
+            holidays.add(MonthDay.of(4, 11)); // Black Saturday 2020
+            holidays.add(MonthDay.of(1, 25)); // Chinese New Year 2020
+            holidays.add(MonthDay.of(5, 24)); // Eid'l Fitr 2020 (adjust manually)
+            holidays.add(MonthDay.of(7, 31)); // Eid'l Adha 2020 (adjust manually)
+        } else if (year == 2021) {
+            holidays.add(MonthDay.of(4, 1));  // Maundy Thursday 2021
+            holidays.add(MonthDay.of(4, 2));  // Good Friday 2021
+            holidays.add(MonthDay.of(4, 3));  // Black Saturday 2021
+            holidays.add(MonthDay.of(2, 12)); // Chinese New Year 2021
+            holidays.add(MonthDay.of(5, 13)); // Eid'l Fitr 2021 (adjust manually)
+            holidays.add(MonthDay.of(7, 20)); // Eid'l Adha 2021 (adjust manually)
+        } else if (year == 2022) {
+            holidays.add(MonthDay.of(4, 14)); // Maundy Thursday 2022
+            holidays.add(MonthDay.of(4, 15)); // Good Friday 2022
+            holidays.add(MonthDay.of(4, 16)); // Black Saturday 2022
+            holidays.add(MonthDay.of(2, 1));  // Chinese New Year 2022
+            holidays.add(MonthDay.of(5, 3));  // Eid'l Fitr 2022 (adjust manually)
+            holidays.add(MonthDay.of(7, 10)); // Eid'l Adha 2022 (adjust manually)
+        } else if (year == 2023) {
+            holidays.add(MonthDay.of(4, 6));  // Maundy Thursday 2023
+            holidays.add(MonthDay.of(4, 7));  // Good Friday 2023
+            holidays.add(MonthDay.of(4, 8));  // Black Saturday 2023
+            holidays.add(MonthDay.of(1, 22)); // Chinese New Year 2023
+            holidays.add(MonthDay.of(4, 21)); // Eid'l Fitr 2023 (adjust manually)
+            holidays.add(MonthDay.of(6, 28)); // Eid'l Adha 2023 (adjust manually)
+        } else if (year == 2024) {
+            holidays.add(MonthDay.of(3, 28)); // Maundy Thursday 2024
+            holidays.add(MonthDay.of(3, 29)); // Good Friday 2024
+            holidays.add(MonthDay.of(3, 30)); // Black Saturday 2024
+            holidays.add(MonthDay.of(2, 10)); // Chinese New Year 2024
+            holidays.add(MonthDay.of(4, 10)); // Eid'l Fitr 2024 (adjust manually)
+            holidays.add(MonthDay.of(6, 17)); // Eid'l Adha 2024 (adjust manually)
+        }
+
+        return holidays;
+    }
+
     public int calculateLeaveDays(String startDateStr, String endDateStr) {
         try {
-            long startDate = DATE_FORMAT.parse(startDateStr).getTime();
-            long endDate = DATE_FORMAT.parse(endDateStr).getTime();
-            return (int) ((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+            Calendar startDate = Calendar.getInstance();
+            startDate.setTime(DATE_FORMAT.parse(startDateStr));
+            Calendar endDate = Calendar.getInstance();
+            endDate.setTime(DATE_FORMAT.parse(endDateStr));
+            
+             if (endDate.before(startDate)) {
+                return -1; 
+            }
+
+            int year = startDate.get(Calendar.YEAR);
+            Set<MonthDay> holidays = new HashSet<>(getPhilippineHolidays(year));
+
+            int leaveDays = 0;
+
+            while (!startDate.after(endDate)) {
+                int dayOfWeek = startDate.get(Calendar.DAY_OF_WEEK);
+                MonthDay currentMonthDay = MonthDay.from(startDate.toInstant().atZone(startDate.getTimeZone().toZoneId()).toLocalDate());
+
+                // Exclude Sundays and holidays
+                if (dayOfWeek != Calendar.SUNDAY && !holidays.contains(currentMonthDay)) {
+                    leaveDays++;
+                }
+
+                // Move to the next day
+                startDate.add(Calendar.DATE, 1);
+            }
+
+            return leaveDays;
         } catch (ParseException e) {
             return -1;
         }
@@ -359,69 +449,6 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Failed to update your record.");
         }
-    }
-    
-    
-     public static List<MonthDay> getPhilippineHolidays(int year) {
-        List<MonthDay> holidays = new ArrayList<>();
-
-        // Regular holidays
-        holidays.add(MonthDay.of(1, 1));   // New Year's Day
-        holidays.add(MonthDay.of(4, 9));   // Araw ng Kagitingan
-        holidays.add(MonthDay.of(5, 1));   // Labor Day
-        holidays.add(MonthDay.of(6, 12));  // Independence Day
-        holidays.add(MonthDay.of(11, 30)); // Bonifacio Day
-        holidays.add(MonthDay.of(12, 25)); // Christmas Day
-        holidays.add(MonthDay.of(12, 30)); // Rizal Day
-
-        // Special holidays
-        holidays.add(MonthDay.of(2, 25));  // EDSA People Power Revolution Anniversary
-        holidays.add(MonthDay.of(8, 21));  // Ninoy Aquino Day
-        holidays.add(MonthDay.of(11, 1));  // All Saints' Day
-        holidays.add(MonthDay.of(11, 2));  // All Souls' Day
-        holidays.add(MonthDay.of(12, 8));  // Feast of the Immaculate Conception
-        holidays.add(MonthDay.of(12, 24)); // Christmas Eve
-        holidays.add(MonthDay.of(12, 31)); // New Year's Eve
-
-        // Moveable holidays (examples for given years, adjust manually)
-        if (year == 2020) {
-            holidays.add(MonthDay.of(4, 9));  // Maundy Thursday 2020
-            holidays.add(MonthDay.of(4, 10)); // Good Friday 2020
-            holidays.add(MonthDay.of(4, 11)); // Black Saturday 2020
-            holidays.add(MonthDay.of(1, 25)); // Chinese New Year 2020
-            holidays.add(MonthDay.of(5, 24)); // Eid'l Fitr 2020 (adjust manually)
-            holidays.add(MonthDay.of(7, 31)); // Eid'l Adha 2020 (adjust manually)
-        } else if (year == 2021) {
-            holidays.add(MonthDay.of(4, 1));  // Maundy Thursday 2021
-            holidays.add(MonthDay.of(4, 2));  // Good Friday 2021
-            holidays.add(MonthDay.of(4, 3));  // Black Saturday 2021
-            holidays.add(MonthDay.of(2, 12)); // Chinese New Year 2021
-            holidays.add(MonthDay.of(5, 13)); // Eid'l Fitr 2021 (adjust manually)
-            holidays.add(MonthDay.of(7, 20)); // Eid'l Adha 2021 (adjust manually)
-        } else if (year == 2022) {
-            holidays.add(MonthDay.of(4, 14)); // Maundy Thursday 2022
-            holidays.add(MonthDay.of(4, 15)); // Good Friday 2022
-            holidays.add(MonthDay.of(4, 16)); // Black Saturday 2022
-            holidays.add(MonthDay.of(2, 1));  // Chinese New Year 2022
-            holidays.add(MonthDay.of(5, 3));  // Eid'l Fitr 2022 (adjust manually)
-            holidays.add(MonthDay.of(7, 10)); // Eid'l Adha 2022 (adjust manually)
-        } else if (year == 2023) {
-            holidays.add(MonthDay.of(4, 6));  // Maundy Thursday 2023
-            holidays.add(MonthDay.of(4, 7));  // Good Friday 2023
-            holidays.add(MonthDay.of(4, 8));  // Black Saturday 2023
-            holidays.add(MonthDay.of(1, 22)); // Chinese New Year 2023
-            holidays.add(MonthDay.of(4, 21)); // Eid'l Fitr 2023 (adjust manually)
-            holidays.add(MonthDay.of(6, 28)); // Eid'l Adha 2023 (adjust manually)
-        } else if (year == 2024) {
-            holidays.add(MonthDay.of(3, 28)); // Maundy Thursday 2024
-            holidays.add(MonthDay.of(3, 29)); // Good Friday 2024
-            holidays.add(MonthDay.of(3, 30)); // Black Saturday 2024
-            holidays.add(MonthDay.of(2, 10)); // Chinese New Year 2024
-            holidays.add(MonthDay.of(4, 10)); // Eid'l Fitr 2024 (adjust manually)
-            holidays.add(MonthDay.of(6, 17)); // Eid'l Adha 2024 (adjust manually)
-        }
-
-        return holidays;
     }
 
     /**
@@ -752,7 +779,6 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
             leaveReason = leaveReason + "_" + jTextFieldOthers.getText();
         }
 
-        
         if (startDate.isEmpty() || endDate.isEmpty() || leaveReason.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields must be filled out", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -864,7 +890,7 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
         if (response == JOptionPane.YES_OPTION) {
             updateCSV();
         }
-                
+
     }//GEN-LAST:event_jButtonSubmitActionPerformed
 
     private void jRadioButtonVacationLeave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVacationLeave1ActionPerformed
@@ -894,14 +920,14 @@ public class LeaveApplicationUser1 extends javax.swing.JFrame {
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             // TODO add your handling code here:
             setVisible(false);
             new LoginManager().setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jButtonLeaveApp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeaveApp2ActionPerformed
