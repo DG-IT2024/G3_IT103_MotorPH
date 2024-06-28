@@ -465,7 +465,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
         });
         jPanel2.add(jButtonProfileDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 91, 150, 22));
 
-        jButtonUpdateDBS.setText("UPDATE DATABASE");
+        jButtonUpdateDBS.setText("PUBLISH");
         jButtonUpdateDBS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonUpdateDBS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
