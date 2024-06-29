@@ -204,13 +204,17 @@ public class EmployeeProfile extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldTINnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 190, 22));
 
-        jTextFieldPhoneNum.setEditable(false);
         jTextFieldPhoneNum.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldPhoneNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldPhoneNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPhoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhoneNumActionPerformed(evt);
+            }
+        });
+        jTextFieldPhoneNum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPhoneNumKeyTyped(evt);
             }
         });
         jPanel1.add(jTextFieldPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 190, 22));
@@ -1128,6 +1132,11 @@ public class EmployeeProfile extends javax.swing.JFrame {
             Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void jTextFieldPhoneNumKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPhoneNumKeyTyped
+        // TODO add your handling code here:
+        allowOnlyDigitsSpecial(evt);
+    }//GEN-LAST:event_jTextFieldPhoneNumKeyTyped
 
     /**
      * @param args the command line arguments
