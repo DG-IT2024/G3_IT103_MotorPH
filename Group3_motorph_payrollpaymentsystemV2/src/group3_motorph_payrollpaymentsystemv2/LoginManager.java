@@ -146,8 +146,8 @@ public class LoginManager extends javax.swing.JFrame {
             openDashboard();
         }
 
-        return isAuthenticated;
-    }
+    return isAuthenticated;
+}
     
     public String matchEmployeeNumber() throws IOException {
         String inputUsername = jTextFieldUsername.getText().toLowerCase(); // accept any case 
@@ -271,7 +271,7 @@ public class LoginManager extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             if(logIn()) {
-            openDashboard();
+            //openDashboard();
             }
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
