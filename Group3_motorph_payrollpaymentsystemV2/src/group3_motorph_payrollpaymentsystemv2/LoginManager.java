@@ -84,49 +84,71 @@ public class LoginManager extends javax.swing.JFrame {
 
         String inputUsername = jTextFieldUsername.getText().toLowerCase(); // accept any case ;
         String inputPassword = jPasswordFieldInput.getText();
+        boolean usernameExists = false;
 
         for (int i = 0; i < employeeDetails.size(); i++) {
             EmployeeLogin employee_ = employeeDetails.get(i);
-            if (employee_.getUsername().toLowerCase().equals(inputUsername) && employee_.getPassword().equals(inputPassword)) {
-//              JOptionPane.showMessageDialog(null, "Match found for user: " + inputUsername, "Login Successful", JOptionPane.INFORMATION_MESSAGE);
-                return true;
+            if (employee_.getUsername().toLowerCase().equals(inputUsername)) {
+                usernameExists = true;
+                if (employee_.getPassword().equals(inputPassword)) {
+                    return true;
             }
         }
-//        JOptionPane.showMessageDialog(null, "No match found for the given credentials.", "Login Failed", JOptionPane.ERROR_MESSAGE);
-        return false;
     }
+
+    if (!usernameExists) {
+        JOptionPane.showMessageDialog(null, "No match found for the given credentials.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+    }
+    return false;
+}
 
     // Method to check login
     public boolean logIn() throws IOException {
-        boolean isAuthenticated = authenticate();
-        String inputUsername = jTextFieldUsername.getText();
+        String inputUsername = jTextFieldUsername.getText().toLowerCase();
+        String inputPassword = new String(jPasswordFieldInput.getPassword()); // Convert password field to string
+        boolean isAuthenticated = false;
+        boolean usernameExists = false;
 
-        if (!isAuthenticated) {
+        // Check if username exists in employeeDetails and authenticate if it does
+        for (EmployeeLogin employee : employeeDetails) {
+            if (employee.getUsername().equalsIgnoreCase(inputUsername)) {
+                usernameExists = true;
+                if (employee.getPassword().equals(inputPassword)) {
+                    isAuthenticated = true;
+                    break; // Exit loop if authenticated
+                }
+            }
+        }
+
+        if (!usernameExists) {
+            JOptionPane.showMessageDialog(null, "No match found for the given credentials.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+        } else if (!isAuthenticated) {
             int attempts = userAttempts.getOrDefault(inputUsername, 0) + 1;
-            userAttempts.put(inputUsername, attempts); //data to be written in the csv file
+            userAttempts.put(inputUsername, attempts);
 
             // Save attempt to CSV
             saveAllAttemptsToCSV();
 
             if (attempts >= MAX_ATTEMPTS) {
-
                 JOptionPane.showMessageDialog(null, "User " + inputUsername + " is blocked due to too many failed attempts.", "Login Failed", JOptionPane.ERROR_MESSAGE);
-                return false;
             } else {
-
                 JOptionPane.showMessageDialog(null, "Attempt " + attempts + " of " + MAX_ATTEMPTS + ".", "Login Failed", JOptionPane.ERROR_MESSAGE);
-
-                return false;
             }
         }
 
         // Reset attempt count after successful login
-        userAttempts.put(inputUsername, 0);
-        // Save attempt to CSV
-        saveAllAttemptsToCSV();
-        return true;
-    }
+        if (isAuthenticated) {
+            userAttempts.put(inputUsername, 0);
+            // Save attempt to CSV
+            saveAllAttemptsToCSV();
 
+            // If authenticated, proceed to open dashboard
+            openDashboard();
+        }
+
+        return isAuthenticated;
+    }
+    
     public String matchEmployeeNumber() throws IOException {
         String inputUsername = jTextFieldUsername.getText().toLowerCase(); // accept any case 
         String inputPassword = jPasswordFieldInput.getText();
@@ -248,9 +270,9 @@ public class LoginManager extends javax.swing.JFrame {
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
         try {
             // TODO add your handling code here:
-            logIn();
+            if(logIn()) {
             openDashboard();
-
+            }
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
