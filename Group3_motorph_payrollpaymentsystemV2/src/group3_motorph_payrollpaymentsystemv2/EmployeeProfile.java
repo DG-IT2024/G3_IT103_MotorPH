@@ -610,6 +610,8 @@ public class EmployeeProfile extends javax.swing.JFrame {
             evt.consume();
         }
     }
+    
+    
 
     public List<String> createTableIdList() {
         DefaultTableModel model = (DefaultTableModel) jTableEmployeeList.getModel();
