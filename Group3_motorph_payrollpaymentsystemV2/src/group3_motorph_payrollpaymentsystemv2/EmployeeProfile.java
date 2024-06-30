@@ -91,6 +91,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jButtonSave = new javax.swing.JButton();
         jButtonLeaveApplication = new javax.swing.JButton();
         jButtonExit = new javax.swing.JButton();
+        jButtonPayrollSummary = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -204,7 +205,6 @@ public class EmployeeProfile extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldTINnum, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 190, 22));
 
-        jTextFieldPhoneNum.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldPhoneNum.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.gray));
         jTextFieldPhoneNum.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextFieldPhoneNum.addActionListener(new java.awt.event.ActionListener() {
@@ -433,88 +433,117 @@ public class EmployeeProfile extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(222, 194, 110));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonClear.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonClear.setText("CLEAR");
         jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonClear.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jButtonClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClearActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, 22));
+        jPanel2.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 150, 20));
 
+        jButtonProfileAdd.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonProfileAdd.setText("ADD");
         jButtonProfileAdd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonProfileAdd.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButtonProfileAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProfileAddActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonProfileAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 64, 150, 22));
+        jPanel2.add(jButtonProfileAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 150, 20));
 
+        jButtonProfileUpdate.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonProfileUpdate.setText("UPDATE");
         jButtonProfileUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonProfileUpdate.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButtonProfileUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProfileUpdateActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonProfileUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 37, 150, 22));
+        jPanel2.add(jButtonProfileUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 25, 150, 20));
 
+        jButtonProfileDelete.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonProfileDelete.setText("DELETE");
         jButtonProfileDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonProfileDelete.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButtonProfileDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProfileDeleteActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonProfileDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 91, 150, 22));
+        jPanel2.add(jButtonProfileDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 75, 150, 20));
 
+        jButtonUpdateDBS.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonUpdateDBS.setText("PUBLISH");
         jButtonUpdateDBS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonUpdateDBS.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButtonUpdateDBS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUpdateDBSActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonUpdateDBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 159, 150, 22));
+        jPanel2.add(jButtonUpdateDBS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, 20));
 
+        jButtonViewEmployee.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonViewEmployee.setText("VIEW EMPLOYEE");
         jButtonViewEmployee.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonViewEmployee.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButtonViewEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonViewEmployeeActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonViewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 186, 150, 22));
+        jPanel2.add(jButtonViewEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 165, 150, 20));
 
+        jButtonSave.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonSave.setText("SAVE");
         jButtonSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonSave.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSaveActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 150, 22));
+        jPanel2.add(jButtonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 105, 150, 20));
 
+        jButtonLeaveApplication.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonLeaveApplication.setText("LEAVE APPLICATION");
         jButtonLeaveApplication.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonLeaveApplication.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButtonLeaveApplication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLeaveApplicationActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonLeaveApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 213, 150, 22));
+        jPanel2.add(jButtonLeaveApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 225, 150, 20));
 
+        jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jButtonExit.setText("EXIT");
         jButtonExit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonExit.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExitActionPerformed(evt);
             }
         });
-        jPanel2.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 247, 150, 22));
+        jPanel2.add(jButtonExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 150, 20));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 180, 280));
+        jButtonPayrollSummary.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jButtonPayrollSummary.setText("PAYROLL SUMMARY");
+        jButtonPayrollSummary.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonPayrollSummary.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jButtonPayrollSummary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPayrollSummaryActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonPayrollSummary, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 150, 20));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 207, 180, 283));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(204, 0, 51));
@@ -1140,6 +1169,21 @@ public class EmployeeProfile extends javax.swing.JFrame {
         allowOnlyDigitsSpecial(evt);
     }//GEN-LAST:event_jTextFieldPhoneNumKeyTyped
 
+    private void jButtonPayrollSummaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPayrollSummaryActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            PayrollSummary payroll = new PayrollSummary();
+            // Display the window
+            payroll.setVisible(true);
+            payroll.pack();
+            payroll.setDefaultCloseOperation(PayrollProcessing.HIDE_ON_CLOSE); //if viewEmployeeFrame is close, main frame will not close.
+
+        } catch (IOException ex) {
+            Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonPayrollSummaryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1187,6 +1231,7 @@ public class EmployeeProfile extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonLeaveApplication;
+    private javax.swing.JButton jButtonPayrollSummary;
     private javax.swing.JButton jButtonProfileAdd;
     private javax.swing.JButton jButtonProfileDelete;
     private javax.swing.JButton jButtonProfileUpdate;

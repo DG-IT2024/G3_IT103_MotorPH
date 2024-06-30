@@ -42,13 +42,15 @@ public class PayrollSummary extends javax.swing.JFrame {
     }
 
     private void csvRun(String csvFile) throws FileNotFoundException, IOException {
+        employees.clear();  // Clear existing entries before reading new data
         List<String[]> records = Filehandling.readCSV(csvFile);
-        List<EmployeePayroll> employees = parseRecords(records);
+        //List<EmployeePayroll> employees = parseRecords(records);
+        parseRecords(records);
         informationTable(employees);
     }
 
-    public static List<EmployeePayroll> parseRecords(List<String[]> records) {
-
+    //public static List<EmployeePayroll> parseRecords(List<String[]> records) {
+    public static void parseRecords(List<String[]> records) {
         for (String[] record : records) {
             String employeeNo = record[0];
             String lastName = record[1];
@@ -71,7 +73,7 @@ public class PayrollSummary extends javax.swing.JFrame {
             employees.add(payroll);
         }
 
-        return employees;
+        //return employees;
     }
 
     private void informationTable(List<EmployeePayroll> employees) {
@@ -220,7 +222,7 @@ public class PayrollSummary extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -294,15 +296,15 @@ public class PayrollSummary extends javax.swing.JFrame {
         jLabel6.setText("Filter by :");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Go Back to Payroll");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonClose.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonClose.setText("CLOSE");
+        jButtonClose.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCloseActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 120, 25));
+        jPanel1.add(jButtonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 55, 70, 23));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 600, 90));
 
@@ -328,21 +330,11 @@ public class PayrollSummary extends javax.swing.JFrame {
         onFilterAction();
     }//GEN-LAST:event_jComboBoxEmployeeNumberActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        try {
-            PayrollProcessing payroll = new PayrollProcessing();
-            // Display the window
-            payroll.setVisible(true);
-            payroll.pack();
-            payroll.setDefaultCloseOperation(PayrollProcessing.DISPOSE_ON_CLOSE); //if viewEmployeeFrame is close, main frame will not close.
 
-        } catch (IOException ex) {
-            Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,7 +377,7 @@ public class PayrollSummary extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonClose;
     private javax.swing.JComboBox<String> jComboBoxCoveredMonth;
     private javax.swing.JComboBox<String> jComboBoxCoveredYear;
     private javax.swing.JComboBox<String> jComboBoxEmployeeNumber;
