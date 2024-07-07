@@ -92,22 +92,29 @@ public class LoginManager extends javax.swing.JFrame {
                 usernameExists = true;
                 if (employee_.getPassword().equals(inputPassword)) {
                     return true;
+                }
             }
         }
-    }
 
-    if (!usernameExists) {
-        JOptionPane.showMessageDialog(null, "No match found for the given credentials.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+        if (!usernameExists) {
+            JOptionPane.showMessageDialog(null, "No match found for the given credentials.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
     }
-    return false;
-}
 
     // Method to check login
-    public boolean logIn() throws IOException {
+    public void logIn() throws IOException {
         String inputUsername = jTextFieldUsername.getText().toLowerCase();
         String inputPassword = new String(jPasswordFieldInput.getPassword()); // Convert password field to string
         boolean isAuthenticated = false;
         boolean usernameExists = false;
+
+        // Check if the user is already blocked
+        int attempts = userAttempts.getOrDefault(inputUsername, 0);
+        if (attempts>= MAX_ATTEMPTS) {
+            JOptionPane.showMessageDialog(null, "User " + inputUsername + " is blocked due to too many failed attempts.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         // Check if username exists in employeeDetails and authenticate if it does
         for (EmployeeLogin employee : employeeDetails) {
@@ -123,7 +130,7 @@ public class LoginManager extends javax.swing.JFrame {
         if (!usernameExists) {
             JOptionPane.showMessageDialog(null, "No match found for the given credentials.", "Login Failed", JOptionPane.ERROR_MESSAGE);
         } else if (!isAuthenticated) {
-            int attempts = userAttempts.getOrDefault(inputUsername, 0) + 1;
+            attempts = userAttempts.getOrDefault(inputUsername, 0) + 1;
             userAttempts.put(inputUsername, attempts);
 
             // Save attempt to CSV
@@ -136,19 +143,16 @@ public class LoginManager extends javax.swing.JFrame {
             }
         }
 
-        // Reset attempt count after successful login
         if (isAuthenticated) {
             userAttempts.put(inputUsername, 0);
             // Save attempt to CSV
             saveAllAttemptsToCSV();
 
-            // If authenticated, proceed to open dashboard
             openDashboard();
         }
 
-    return isAuthenticated;
-}
-    
+    }
+
     public String matchEmployeeNumber() throws IOException {
         String inputUsername = jTextFieldUsername.getText().toLowerCase(); // accept any case 
         String inputPassword = jPasswordFieldInput.getText();
@@ -270,9 +274,7 @@ public class LoginManager extends javax.swing.JFrame {
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
         try {
             // TODO add your handling code here:
-            if(logIn()) {
-            //openDashboard();
-            }
+            logIn();
         } catch (IOException ex) {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }

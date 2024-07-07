@@ -261,6 +261,22 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
         }
     }
 
+    public void handleWindowClosing() {
+        int option = JOptionPane.showConfirmDialog(
+                this,
+                "Do you want to save before closing?",
+                "Save",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+
+        if (option == JOptionPane.YES_OPTION) {
+            updateCSV();
+            setVisible(false); // Close the application after saving
+        } else if (option == JOptionPane.NO_OPTION) {
+            setVisible(false); // Close the application without saving
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -691,7 +707,7 @@ public class LeaveApplicationAdmin extends javax.swing.JFrame {
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        handleWindowClosing();
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     /**
