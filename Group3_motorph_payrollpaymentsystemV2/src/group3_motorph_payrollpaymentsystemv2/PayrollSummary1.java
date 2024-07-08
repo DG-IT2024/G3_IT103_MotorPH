@@ -22,14 +22,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author danilo
  */
-public class PayrollSummary extends javax.swing.JFrame {
+public class PayrollSummary1 extends javax.swing.JFrame {
 
     public static List<EmployeePayroll> employees = new ArrayList<>();
 
     /**
      * Creates new form PayrollSummary2
      */
-    public PayrollSummary() throws FileNotFoundException, IOException {
+    public PayrollSummary1() throws FileNotFoundException, IOException {
         initComponents();
 
         String csvFile = "PayrollRecords.csv";
@@ -38,7 +38,7 @@ public class PayrollSummary extends javax.swing.JFrame {
 
         populatecomboboxCoveredPeriods();
         populateByEmployeeNum();
-    
+
         setIconImage();
     }
 
@@ -135,25 +135,22 @@ public class PayrollSummary extends javax.swing.JFrame {
     }
 
     private void populateByEmployeeNum() {
-        Set<String> employeeSet = new HashSet<>();
+        Set<Integer> employeeSet = new HashSet<>();
 
         for (EmployeePayroll payroll : employees) {
             String id = payroll.getEmployeeNo();
-            String firstName = payroll.getFirstName();
-            String lastName = payroll.getLastName();
-            String employeeInfo = id + "- " + lastName + ", " + firstName ;
-            employeeSet.add(employeeInfo);
+            employeeSet.add(Integer.valueOf(id));
         }
 
-        List<String> employeeList = new ArrayList<>(employeeSet);
+        List<Integer> employeeList = new ArrayList<>(employeeSet);
         Collections.sort(employeeList);
 
         jComboBoxEmployeeNumber.addItem("");
-        for (String employeeInfo : employeeList) {
-            jComboBoxEmployeeNumber.addItem(employeeInfo);
+        for (int id : employeeList) {
+            jComboBoxEmployeeNumber.addItem(String.valueOf(id));
         }
     }
- 
+
     public void filterByCategory(String month, String year, String employeeNumber) {
         DefaultTableModel tableModel = (DefaultTableModel) jTablePayrollSummary.getModel();
         tableModel.setRowCount(0); // Clear existing rows
@@ -203,7 +200,7 @@ public class PayrollSummary extends javax.swing.JFrame {
         String year = jComboBoxCoveredYear.getSelectedItem() != null ? jComboBoxCoveredYear.getSelectedItem().toString() : "";
         String employeeInfo = jComboBoxEmployeeNumber.getSelectedItem() != null ? jComboBoxEmployeeNumber.getSelectedItem().toString() : "";
 
-        String[] employeeParts = employeeInfo.split("-");
+        String[] employeeParts = employeeInfo.split(",");
         String employeeNumber = employeeParts.length > 0 ? employeeParts[0] : "";
 
         filterByCategory(month, year, employeeNumber);
@@ -287,7 +284,7 @@ public class PayrollSummary extends javax.swing.JFrame {
                 jComboBoxEmployeeNumberActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBoxEmployeeNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 200, -1));
+        jPanel1.add(jComboBoxEmployeeNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 210, -1));
 
         jLabel1.setText("Month");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
@@ -296,7 +293,7 @@ public class PayrollSummary extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
         jLabel3.setText("Employee");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 60, -1));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 13, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
@@ -332,16 +329,16 @@ public class PayrollSummary extends javax.swing.JFrame {
         onFilterAction();
     }//GEN-LAST:event_jComboBoxCoveredYearActionPerformed
 
-    private void jComboBoxEmployeeNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEmployeeNumberActionPerformed
-        // TODO add your handling code here:
-        onFilterAction();
-    }//GEN-LAST:event_jComboBoxEmployeeNumberActionPerformed
-
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here:
         setVisible(false);
 
     }//GEN-LAST:event_jButtonCloseActionPerformed
+
+    private void jComboBoxEmployeeNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEmployeeNumberActionPerformed
+        // TODO add your handling code here:
+        onFilterAction();
+    }//GEN-LAST:event_jComboBoxEmployeeNumberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,14 +357,16 @@ public class PayrollSummary extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PayrollSummary.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayrollSummary1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PayrollSummary.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayrollSummary1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PayrollSummary.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayrollSummary1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PayrollSummary.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PayrollSummary1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -375,9 +374,9 @@ public class PayrollSummary extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new PayrollSummary().setVisible(true);
+                    new PayrollSummary1().setVisible(true);
                 } catch (IOException ex) {
-                    Logger.getLogger(PayrollSummary.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PayrollSummary1.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

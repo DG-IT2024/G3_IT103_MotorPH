@@ -111,7 +111,7 @@ public class LoginManager extends javax.swing.JFrame {
 
         // Check if the user is already blocked
         int attempts = userAttempts.getOrDefault(inputUsername, 0);
-        if (attempts>= MAX_ATTEMPTS) {
+        if (attempts >= MAX_ATTEMPTS) {
             JOptionPane.showMessageDialog(null, "User " + inputUsername + " is blocked due to too many failed attempts.", "Login Failed", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -282,7 +282,15 @@ public class LoginManager extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
-        System.exit(0);
+
+        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?", "Confirm Exit",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        // Check the user's response
+        if (response == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+
     }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jCheckBoxShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxShowPasswordActionPerformed

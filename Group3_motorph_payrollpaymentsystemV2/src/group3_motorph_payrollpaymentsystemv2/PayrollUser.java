@@ -1,4 +1,3 @@
-
 package group3_motorph_payrollpaymentsystemv2;
 
 import com.opencsv.CSVReader;
@@ -823,14 +822,21 @@ public class PayrollUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPayroll1ActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
-        // TODO add your handling code here:
-        
-         try {
-            // TODO add your handling code here:
-            setVisible(false);
-            new LoginManager().setVisible(true);
-        } catch (IOException ex) {
-            Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?", "Confirm Exit",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        // Check the user's response
+        if (response == JOptionPane.YES_OPTION) {
+            try {
+                // Hide the current window
+                setVisible(false);
+
+                // Show the login manager window
+                new LoginManager().setVisible(true);
+            } catch (IOException ex) {
+                // Log the exception if there is an IOException
+                Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButtonExitActionPerformed
 

@@ -24,12 +24,12 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.MonthDay;
 import java.time.YearMonth;
+import javax.swing.JTextField;
 
 /**
  *
  * @author danilo
  */
-
 public class PayrollProcessing extends javax.swing.JFrame {
 
     public List<EmployeeHoursWorked> employeeData = new ArrayList<>();
@@ -181,6 +181,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
             writer.writeNext(entry);
             JOptionPane.showMessageDialog(null, "Entry added successfully.");
+            clearFields();
         } catch (IOException ex) {
 
         }
@@ -188,7 +189,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
     }
 
     public void clearFields() {
-        jTextFieldBenefits.setText("");
         jTextFieldGrossIncome.setText("");
         jTextFieldGrossIncome_S.setText("");
         jTextFieldHourlyRate.setText("");
@@ -202,7 +202,36 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
     }
 
+    public boolean emptyField() {
+        boolean isEmpty = false;
+
+        // List of all text fields to check
+        JTextField[] textFields = {
+            jTextFieldGrossIncome,
+            jTextFieldGrossIncome_S,
+            jTextFieldHourlyRate,
+            jTextFieldPagibigDeduction,
+            jTextFieldPhilHealthDeduction,
+            jTextFieldTakeHomePay,
+            jTextFieldTotalDeductions,
+            jTextFieldWHT,
+            jTextFieldWorkedHours,
+            jTextSssDeduction
+        };
+
+        // Check each text field
+        for (JTextField textField : textFields) {
+            if (textField.getText().trim().isEmpty()) {
+                isEmpty = true;
+                break;
+            }
+        }
+
+        return isEmpty;
+    }
+
     public boolean isUniqueCompute() {
+
         try {
             String Id = jTextFieldEmployeeNum.getText();
             String month = jComboBoxCoveredMonth.getSelectedItem().toString();
@@ -213,7 +242,6 @@ public class PayrollProcessing extends javax.swing.JFrame {
 
             for (String[] record : records) {
                 if (record[0].equals(Id) && record[11].equals(month) && record[12].equals(year)) {
-                    JOptionPane.showMessageDialog(null, "This entry already exists in the payroll records.");
                     return false; // Record with same Id, month, and year exists
                 }
             }
@@ -285,26 +313,36 @@ public class PayrollProcessing extends javax.swing.JFrame {
     }
 
     public void handleWindowClosing() {
+
+        boolean isUnique = isUniqueCompute();
+
+        // Check if the entry is unique or if any text fields are empty
+        if (!isUniqueCompute() || emptyField()) {
+            setVisible(false); // Allow closing without saving if the entry is not unique or any fields are empty
+            return;
+        }
+        // If the entry is unique or already saved, proceed with the confirmation dialog
         int option = JOptionPane.showConfirmDialog(
                 this,
                 "Do you want to save before closing?",
                 "Save",
                 JOptionPane.YES_NO_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.QUESTION_MESSAGE
+        );
 
         if (option == JOptionPane.YES_OPTION) {
-            try {
-                updatePayrollRecords();
-                setVisible(false);
-            } catch (IOException ex) {
-                Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
+            if (isUnique) {
+                try {
+                    updatePayrollRecords();
+                } catch (IOException ex) {
+                    Logger.getLogger(PayrollProcessing.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-         } else if (option == JOptionPane.NO_OPTION) {
-            setVisible(false);; // Close the application without saving
+            setVisible(false);
+        } else if (option == JOptionPane.NO_OPTION) {
+            setVisible(false); // Close the application without saving
         }
-       
     }
-    
 
     public int getWorkingDays(int month, int year) {
 
@@ -394,7 +432,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
     }
 
     public void addToRecords() {
-        if (isUniqueCompute()) {
+        if (isUniqueCompute() && !emptyField()) {
             int response = JOptionPane.showConfirmDialog(null, "Do you want to add this to the payroll records?",
                     "Update Confirmation",
                     JOptionPane.YES_NO_OPTION,
@@ -408,6 +446,10 @@ public class PayrollProcessing extends javax.swing.JFrame {
                 }
             } else {
 
+            }
+        } else {
+            if (!emptyField()) {
+                JOptionPane.showMessageDialog(null, "This entry already exists in the payroll records.");
             }
         }
     }
@@ -850,7 +892,7 @@ public class PayrollProcessing extends javax.swing.JFrame {
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
         // TODO add your handling code here:
         handleWindowClosing();
-    
+
     }//GEN-LAST:event_jButtonCloseActionPerformed
 
     private void jButtonAddtoRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddtoRecordsActionPerformed
@@ -871,40 +913,40 @@ public class PayrollProcessing extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PayrollProcessing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PayrollProcessing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PayrollProcessing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PayrollProcessing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    } catch (ClassNotFoundException ex) {
-        java.util.logging.Logger.getLogger(PayrollProcessing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        java.util.logging.Logger.getLogger(PayrollProcessing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        java.util.logging.Logger.getLogger(PayrollProcessing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        java.util.logging.Logger.getLogger(PayrollProcessing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        //</editor-fold>
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new PayrollProcessing().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
     }
-    //</editor-fold>
-
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            try {
-                new PayrollProcessing().setVisible(true);
-            } catch (IOException ex) {
-                Logger.getLogger(EmployeeProfile.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    });
-
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddtoRecords;
